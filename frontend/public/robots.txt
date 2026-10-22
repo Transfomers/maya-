@@ -1,0 +1,5 @@
+# robots.txt for https://3mconsultingsarl.com
+User-agent: *
+Allow: /
+
+Sitemap: https://3mconsultingsarl.com/sitemap.xml

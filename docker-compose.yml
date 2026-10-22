@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  # Managed PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: cap_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cap_user
+      POSTGRES_PASSWORD: cap_password_2026
+      POSTGRES_DB: cap_onboard
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cap_user -d cap_onboard"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Flask Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cap_backend
+    restart: unless-stopped
+    environment:
+      FLASK_ENV: production
+      PORT: 5001
+      DATABASE_URL: postgresql://cap_user:cap_password_2026@db:5432/cap_onboard
+      SECRET_KEY: ${SECRET_KEY:-change-this-in-production-random-hex-key}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:-change-this-in-production-jwt-random-key}
+      POWER_AUTOMATE_WEBHOOK_URL: ${POWER_AUTOMATE_WEBHOOK_URL:-}
+      POWER_AUTOMATE_SECRET_TOKEN: ${POWER_AUTOMATE_SECRET_TOKEN:-}
+      NOTIFICATION_EMAIL_RECIPIENT: ${NOTIFICATION_EMAIL_RECIPIENT:-contact@capentrepreneurs.org}
+    ports:
+      - "5001:5001"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # React Frontend (Vite Nginx production container)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cap_frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
