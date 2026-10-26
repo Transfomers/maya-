@@ -940,9 +940,17 @@ export const HomePage: React.FC = () => {
                       href={t.contact.coordinates.socialFacebookUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-slate-100 hover:bg-jevelin-orange hover:text-white text-xs font-semibold text-slate-700 transition rounded"
+                      className="px-3 py-1.5 bg-slate-100 hover:bg-[#1877F2] hover:text-white text-xs font-semibold text-slate-700 transition rounded"
                     >
                       Facebook
+                    </a>
+                    <a
+                      href={t.contact.coordinates.socialTikTokUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-1.5 bg-slate-100 hover:bg-[#EE1D52] hover:text-white text-xs font-semibold text-slate-700 transition rounded"
+                    >
+                      TikTok
                     </a>
                     <a
                       href="https://wa.me/237673841821"
@@ -967,14 +975,6 @@ export const HomePage: React.FC = () => {
                       className="px-3 py-1.5 bg-slate-100 hover:bg-blue-700 hover:text-white text-xs font-semibold text-slate-700 transition rounded"
                     >
                       LinkedIn
-                    </a>
-                    <a
-                      href="https://tiktok.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-slate-100 hover:bg-black hover:text-white text-xs font-semibold text-slate-700 transition rounded"
-                    >
-                      TikTok
                     </a>
                   </div>
                 </div>

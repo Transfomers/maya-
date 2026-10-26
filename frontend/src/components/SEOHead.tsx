@@ -233,7 +233,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
           },
         ],
         sameAs: [
-          'https://www.facebook.com/profile.php?id=100095136727288',
+          'https://www.facebook.com/share/1FftJwk51R/?mibextid=wwXIfr',
+          'https://vt.tiktok.com/ZSgXqLqXu/',
+          'https://3mconsultingsarl.com',
           'https://3mconsulting.digital/',
         ],
       },
