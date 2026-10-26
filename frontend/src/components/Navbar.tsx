@@ -66,48 +66,58 @@ export const Navbar: React.FC = () => {
             <Logo3M variant="dark" size="md" withTagline={true} />
           </Link>
 
-          {/* Contact Widgets on the right — Exact Jevelin style matching screenshot */}
-          <div className="flex items-center space-x-7">
+          {/* Contact Widgets on the right — Jevelin style with orange outlined icons */}
+          <div className="flex items-center space-x-8">
             {/* Call Us */}
-            <div className="flex items-center space-x-2.5">
-              <Phone className="w-5 h-5 text-[#eb583d] stroke-[1.8] flex-shrink-0" />
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0">
+                <Phone className="w-4 h-4 stroke-[1.75]" />
+              </div>
               <div className="text-left">
-                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#eb583d] block leading-none mb-1">
-                  {language === 'fr' ? 'APPEL DIRECT' : 'CALL US'}
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 block">
+                  {language === 'fr' ? 'APPEL DIRECT' : 'DIRECT CALL'}
                 </span>
                 <a
-                  href="tel:+237698668761"
-                  className="text-xs font-bold text-slate-800 hover:text-[#eb583d] transition-colors leading-none"
+                  href="tel:+237673841821"
+                  className="text-xs font-semibold text-slate-900 hover:text-jevelin-orange transition-colors"
                 >
-                  +237 698 66 87 61
+                  +237 673 84 18 21
                 </a>
               </div>
             </div>
 
             {/* Official Email */}
-            <div className="flex items-center space-x-2.5">
-              <Mail className="w-5 h-5 text-[#eb583d] stroke-[1.8] flex-shrink-0" />
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0">
+                <Mail className="w-4 h-4 stroke-[1.75]" />
+              </div>
               <div className="text-left">
-                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#eb583d] block leading-none mb-1">
-                  {language === 'fr' ? 'EMAIL OFFICIEL' : 'E-MAIL'}
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 block">
+                  {language === 'fr' ? 'EMAIL OFFICIEL' : 'OFFICIAL EMAIL'}
                 </span>
-                <div className="flex items-center space-x-1.5 leading-none">
+                <div className="flex items-center space-x-2">
                   <a
                     href="mailto:contact@3mconsultingsarl.com"
-                    className="text-xs font-bold text-slate-800 hover:text-[#eb583d] transition-colors"
+                    className="text-xs font-semibold text-slate-900 hover:text-jevelin-orange transition-colors"
                   >
                     contact@3mconsultingsarl.com
                   </a>
                   <button
                     type="button"
                     onClick={handleCopyEmail}
-                    className="inline-flex items-center p-0.5 text-[9px] font-semibold text-slate-400 hover:text-slate-800 transition"
+                    className="inline-flex items-center px-1.5 py-0.5 text-[10px] font-medium bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 transition rounded"
                     title={language === 'fr' ? "Copier l'adresse" : "Copy email"}
                   >
                     {copiedEmail ? (
-                      <Check className="w-3 h-3 text-emerald-600" />
+                      <>
+                        <Check className="w-2.5 h-2.5 mr-0.5 text-emerald-600" />
+                        <span>{language === 'fr' ? 'Copié' : 'Copied'}</span>
+                      </>
                     ) : (
-                      <Copy className="w-3 h-3 text-slate-400 hover:text-slate-700" />
+                      <>
+                        <Copy className="w-2.5 h-2.5 mr-0.5 text-slate-500" />
+                        <span>{language === 'fr' ? 'Copier' : 'Copy'}</span>
+                      </>
                     )}
                   </button>
                 </div>
@@ -115,13 +125,15 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Location */}
-            <div className="flex items-center space-x-2.5">
-              <MapPin className="w-5 h-5 text-[#eb583d] stroke-[1.8] flex-shrink-0" />
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-700 flex-shrink-0">
+                <MapPin className="w-4 h-4 stroke-[1.75]" />
+              </div>
               <div className="text-left">
-                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#eb583d] block leading-none mb-1">
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 block">
                   {language === 'fr' ? 'LOCALISATION' : 'LOCATION'}
                 </span>
-                <span className="text-xs font-bold text-slate-800 block leading-none">
+                <span className="text-xs font-semibold text-slate-900 block">
                   Omnisport Rue Foé, Yaoundé
                 </span>
               </div>
@@ -221,14 +233,13 @@ export const Navbar: React.FC = () => {
                 </a>
               </div>
 
-              {/* Primary CTA Button — Jevelin orange */}
-              <button
-                type="button"
-                onClick={() => setAssistanceModalOpen(true)}
+              {/* Primary CTA Button — links directly to /contact */}
+              <Link
+                to="/contact"
                 className="inline-flex items-center px-5 py-2.5 font-heading font-extrabold text-[10px] uppercase tracking-[0.15em] text-white bg-jevelin-orange hover:bg-jevelin-orangeHover shadow-sm hover:shadow-md transition-all"
               >
                 <span>{t.navbar.ctaAssistance}</span>
-              </button>
+              </Link>
             </div>
 
             {/* Mobile Controls */}
@@ -278,16 +289,13 @@ export const Navbar: React.FC = () => {
             </nav>
 
             <div className="pt-3 border-t border-slate-100 space-y-3">
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  setAssistanceModalOpen(true);
-                }}
+              <Link
+                to="/contact"
+                onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-3.5 px-4 font-heading font-extrabold text-xs uppercase tracking-[0.15em] text-white bg-jevelin-orange hover:bg-jevelin-orangeHover text-center shadow-md flex items-center justify-center space-x-2"
               >
                 <span>{t.navbar.ctaAssistance}</span>
-              </button>
+              </Link>
 
               <div className="p-3 bg-slate-50 space-y-2 text-xs text-slate-600">
                 <div className="flex items-center">
@@ -296,8 +304,8 @@ export const Navbar: React.FC = () => {
                 </div>
                 <div className="flex items-center">
                   <Phone className="w-3.5 h-3.5 mr-2 text-jevelin-orange flex-shrink-0" />
-                  <a href="tel:+237698668761" className="hover:underline font-bold">
-                    +237 698 66 87 61
+                  <a href="tel:+237673841821" className="hover:underline font-bold">
+                    +237 673 84 18 21
                   </a>
                 </div>
                 <div className="flex items-center">

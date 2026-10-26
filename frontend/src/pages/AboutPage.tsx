@@ -51,6 +51,17 @@ export const AboutPage: React.FC = () => {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 font-heading pt-2">
             {language === 'fr' ? 'NOTRE DEVISE :' : 'OUR MOTTO :'} <span className="text-slate-800 font-extrabold">WE TAKE THE NEXT STEP TOGETHER</span>
           </p>
+
+          <div className="pt-4 max-w-lg mx-auto">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-800 bg-black">
+              <img
+                src="/asset/3m-consulting-we-take-the-next-step.webp"
+                alt="3M Consulting - We Take The Next Step Together"
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -410,11 +421,11 @@ export const AboutPage: React.FC = () => {
                     <span>contact@3mconsultingsarl.com</span>
                   </a>
                   <a
-                    href="tel:+237698668761"
+                    href="tel:+237673841821"
                     className="inline-flex items-center space-x-1.5 text-slate-700 hover:text-jevelin-orange"
                   >
                     <Phone className="w-3.5 h-3.5" />
-                    <span>+237 698 66 87 61</span>
+                    <span>+237 673 84 18 21</span>
                   </a>
                 </div>
               </div>

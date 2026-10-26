@@ -189,11 +189,11 @@ export const ContactPage: React.FC = () => {
                         {t.contact.coordinates.phoneLabel}
                       </span>
                       <div className="flex flex-col space-y-1 mt-0.5 font-semibold text-slate-900">
-                        <a href="tel:+237698668761" className="hover:text-brand-600 transition">
-                          +237 698 66 87 61
-                        </a>
                         <a href="tel:+237673841821" className="hover:text-brand-600 transition">
                           +237 673 84 18 21
+                        </a>
+                        <a href="tel:+237698668761" className="hover:text-brand-600 transition text-slate-500 font-normal">
+                          +237 698 66 87 61
                         </a>
                       </div>
                     </div>
@@ -235,6 +235,33 @@ export const ContactPage: React.FC = () => {
                     <span>{t.contact.coordinates.socialFacebookLabel}</span>
                     <ExternalLink className="w-3.5 h-3.5 ml-auto opacity-70" />
                   </a>
+                </div>
+              </div>
+
+              {/* Consultation In-Person Feature Card */}
+              <div className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/90 shadow-xs">
+                <div className="relative h-44 w-full overflow-hidden">
+                  <img
+                    src="/asset/consultation-dossiers-meeting.webp"
+                    alt="Étude de dossier et consultation au siège 3M Consulting"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent flex items-end p-3.5">
+                    <span className="text-[10px] font-bold tracking-wider uppercase text-white bg-slate-900/80 backdrop-blur-sm px-2 py-0.5 rounded">
+                      {language === 'fr' ? 'SUR RENDEZ-VOUS' : 'BY APPOINTMENT'}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-5 space-y-1.5 text-xs text-slate-600">
+                  <h4 className="font-heading font-bold text-sm text-slate-900">
+                    {language === 'fr' ? 'Accueil & Étude Personnalisée' : 'In-Person Consultation'}
+                  </h4>
+                  <p className="leading-relaxed">
+                    {language === 'fr'
+                      ? 'Nos consultants vous reçoivent au siège à Omnisport Rue Foé pour une analyse confidentielle et approfondie de votre dossier.'
+                      : 'Our senior consultants welcome you at our Yaoundé office for a confidential assessment of your corporate files.'}
+                  </p>
                 </div>
               </div>
             </div>

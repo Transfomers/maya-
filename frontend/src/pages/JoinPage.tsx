@@ -247,13 +247,24 @@ export const JoinPage: React.FC = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="border-b border-slate-100 pb-4">
+                <div className="border-b border-slate-100 pb-5 space-y-3">
                   <h2 className="text-2xl font-bold font-heading text-slate-900">
                     {activeTab === 'client' ? t.joinUs.client.title : t.joinUs.consultant.title}
                   </h2>
-                  <p className="text-sm text-slate-600 mt-1">
+                  <p className="text-sm text-slate-600">
                     {activeTab === 'client' ? t.joinUs.client.description : t.joinUs.consultant.description}
                   </p>
+                  <div className="flex flex-wrap gap-2 pt-1">
+                    {(activeTab === 'client' ? t.joinUs.client.perks : t.joinUs.consultant.perks).map((perk, idx) => (
+                      <span
+                        key={idx}
+                        className="inline-flex items-center text-xs font-semibold text-slate-700 bg-slate-50 px-3 py-1 rounded-full border border-slate-200"
+                      >
+                        <CheckCircle2 className="w-3.5 h-3.5 mr-1.5 text-emerald-600 flex-shrink-0" />
+                        <span>{perk}</span>
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Identity fields */}
@@ -394,6 +405,69 @@ export const JoinPage: React.FC = () => {
                 </div>
               </form>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* 4-Step Onboarding Timeline Section */}
+      <section className="py-16 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          <div className="text-center space-y-3">
+            <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-jevelin-orange block">
+              {t.easiestWay.badge}
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black font-heading text-jevelin-dark">
+              {t.easiestWay.heading}
+            </h3>
+            <p className="text-sm text-slate-600 max-w-xl mx-auto">
+              {t.easiestWay.subheading}
+            </p>
+          </div>
+
+          {/* Authentic Team Working Banner */}
+          <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-md group">
+            <img
+              src="/asset/team-working-office.webp"
+              alt="Consultants 3M Consulting au siège Omnisport Yaoundé"
+              className="w-full h-56 sm:h-72 object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent flex items-end p-6">
+              <div className="text-white space-y-1">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent-300 block">
+                  3M CONSULTING · YAOUNDÉ
+                </span>
+                <p className="text-base sm:text-lg font-bold font-heading">
+                  {language === 'fr'
+                    ? 'Un réseau d’experts pluridisciplinaires réactif et disponible.'
+                    : 'A responsive and multidisciplinary network of seasoned advisors.'}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {t.easiestWay.steps.map((st, i) => (
+              <div
+                key={i}
+                className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs hover:shadow-md transition-all space-y-3 relative group"
+              >
+                <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-heading font-black text-sm">
+                  0{st.stepNumber}
+                </div>
+                <h4 className="font-heading font-bold text-base text-slate-900">
+                  {st.action}
+                </h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {st.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Business Hours Note */}
+          <div className="p-4 rounded-xl bg-white border border-slate-200 text-center text-xs text-slate-600 font-medium">
+            ⏱ {t.easiestWay.hoursNote}
           </div>
         </div>
       </section>

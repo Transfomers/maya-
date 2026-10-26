@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage -->
   <url>
     <loc>https://3mconsultingsarl.com/</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/?lang=fr"/>
@@ -9,13 +10,80 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- All Services Index -->
   <url>
     <loc>https://3mconsultingsarl.com/services</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/services?lang=fr"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://3mconsultingsarl.com/services?lang=en"/>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <!-- Service 1: Création d'entreprise, filiale et succursale -->
+  <url>
+    <loc>https://3mconsultingsarl.com/creation-entreprise-cameroun</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/creation-entreprise-cameroun?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://3mconsultingsarl.com/creation-entreprise-cameroun?lang=en"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service 2: Recherche et aménagement de locaux professionnels -->
+  <url>
+    <loc>https://3mconsultingsarl.com/recherche-amenagement-locaux-yaounde</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/recherche-amenagement-locaux-yaounde?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://3mconsultingsarl.com/recherche-amenagement-locaux-yaounde?lang=en"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service 3: Agréments ministériels et licences d'exploitation -->
+  <url>
+    <loc>https://3mconsultingsarl.com/agrements-ministeriels-licences-cameroun</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/agrements-ministeriels-licences-cameroun?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://3mconsultingsarl.com/agrements-ministeriels-licences-cameroun?lang=en"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service 4: Gestion fiscale mensuelle et déclarations CNPS -->
+  <url>
+    <loc>https://3mconsultingsarl.com/gestion-fiscale-declarations-cnps-cameroun</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/gestion-fiscale-declarations-cnps-cameroun?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://3mconsultingsarl.com/gestion-fiscale-declarations-cnps-cameroun?lang=en"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service 5: Montage de DSF, liasses fiscales et dossiers de crédit -->
+  <url>
+    <loc>https://3mconsultingsarl.com/montage-dsf-dossiers-credit-cameroun</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/montage-dsf-dossiers-credit-cameroun?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://3mconsultingsarl.com/montage-dsf-dossiers-credit-cameroun?lang=en"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service 6: Conception de dossiers d'appel d'offres (DAO) et TDR -->
+  <url>
+    <loc>https://3mconsultingsarl.com/conception-dao-redaction-tdr-cameroun</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/conception-dao-redaction-tdr-cameroun?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://3mconsultingsarl.com/conception-dao-redaction-tdr-cameroun?lang=en"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Service 7: Montage d'offres aux marchés publics et privés -->
+  <url>
+    <loc>https://3mconsultingsarl.com/montage-offres-marches-publics-cameroun</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/montage-offres-marches-publics-cameroun?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://3mconsultingsarl.com/montage-offres-marches-publics-cameroun?lang=en"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- About -->
   <url>
     <loc>https://3mconsultingsarl.com/about</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/about?lang=fr"/>
@@ -23,6 +91,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Join Us / Recruitment / Client Registration -->
   <url>
     <loc>https://3mconsultingsarl.com/join</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/join?lang=fr"/>
@@ -30,6 +100,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Contact -->
   <url>
     <loc>https://3mconsultingsarl.com/contact</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://3mconsultingsarl.com/contact?lang=fr"/>
@@ -37,6 +109,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Privacy Policy -->
   <url>
     <loc>https://3mconsultingsarl.com/privacy</loc>
     <changefreq>yearly</changefreq>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
+import { SERVICE_ID_TO_CANONICAL } from '../content/servicesSeoData';
 import {
   Building2,
   FileCheck,
@@ -78,8 +79,8 @@ export const ServicesPage: React.FC = () => {
 
           <h1 className="text-3xl sm:text-5xl font-black font-heading text-slate-900 tracking-tight max-w-4xl mx-auto uppercase">
             {language === 'fr'
-              ? 'Nos Domaines d’Expertise'
-              : 'Our Practice Areas'}
+              ? 'Domaines d’Expertise & Solutions d’Affaires'
+              : 'Practice Areas & Corporate Solutions'}
           </h1>
 
           <div className="flex justify-center">
@@ -90,6 +91,19 @@ export const ServicesPage: React.FC = () => {
             {t.whatWeOffer.intro}
           </p>
 
+          {/* Commercial Trust Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs font-semibold text-slate-700">
+            <span className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200">
+              ✓ {language === 'fr' ? 'Création d’entreprise en 72h' : '72h Fast Incorporation'}
+            </span>
+            <span className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200">
+              ✓ {language === 'fr' ? '100% Conforme OHADA & DGI' : '100% OHADA & Tax Compliant'}
+            </span>
+            <span className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200">
+              ✓ {language === 'fr' ? 'Bureau Omnisport Rue Foé, Yaoundé' : 'Headquarters in Yaoundé'}
+            </span>
+          </div>
+
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={() => openAssistance('')}
@@ -98,11 +112,11 @@ export const ServicesPage: React.FC = () => {
               <span>{t.navbar.ctaAssistance}</span>
             </button>
             <a
-              href="tel:+237698668761"
+              href="tel:+237673841821"
               className="inline-flex items-center px-6 py-3.5 font-heading font-extrabold text-xs uppercase tracking-[0.15em] text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 transition"
             >
               <PhoneCall className="w-4 h-4 mr-2 text-slate-600" />
-              <span>+237 698 66 87 61</span>
+              <span>+237 673 84 18 21</span>
             </a>
           </div>
         </div>
@@ -145,8 +159,8 @@ export const ServicesPage: React.FC = () => {
                       {service.description}
                     </p>
 
-                    {/* Action Button */}
-                    <div className="pt-2">
+                    {/* Action Buttons */}
+                    <div className="pt-2 flex flex-wrap items-center gap-3">
                       <button
                         type="button"
                         onClick={() => openAssistance(service.title)}
@@ -154,11 +168,21 @@ export const ServicesPage: React.FC = () => {
                       >
                         <span>
                           {language === 'fr'
-                            ? `Demander un accompagnement : ${service.title}`
-                            : `Request Support: ${service.title}`}
+                            ? `Obtenir un accompagnement`
+                            : `Request Support`}
                         </span>
                         <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                       </button>
+
+                      <Link
+                        to={SERVICE_ID_TO_CANONICAL[service.id] || `/services#${service.id}`}
+                        className="inline-flex items-center px-5 py-3.5 rounded-md font-heading font-bold text-xs uppercase tracking-wider text-slate-700 hover:text-jevelin-orange bg-slate-100 hover:bg-slate-200 border border-slate-200 transition group"
+                      >
+                        <span>
+                          {language === 'fr' ? 'Consulter la page détaillée & FAQ' : 'View Full Details & FAQs'}
+                        </span>
+                        <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-jevelin-orange" />
+                      </Link>
                     </div>
                   </div>
 
@@ -227,26 +251,56 @@ export const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Bottom CTA Block */}
-      <section className="bg-gradient-to-r from-brand-900 via-brand-800 to-navy-900 py-16 text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-white">
-            {language === 'fr'
-              ? 'Un besoin spécifique ou une formalité sur-mesure ?'
-              : 'A Specific Requirement or Custom Procedure?'}
-          </h2>
-          <p className="text-slate-300 text-base max-w-2xl mx-auto">
-            {language === 'fr'
-              ? 'Prenez contact avec notre équipe à Yaoundé. Nous étudions votre dossier et définissons la marche à suivre la plus efficace.'
-              : 'Contact our team in Yaoundé. We review your requirements and outline the most effective path forward.'}
-          </p>
-          <div className="pt-2">
-            <button
-              onClick={() => openAssistance('')}
-              className="px-8 py-4 rounded-xl font-heading font-bold text-base text-slate-900 bg-white hover:bg-slate-100 shadow-lg transition"
-            >
-              {t.navbar.ctaAssistance}
-            </button>
+      {/* Bottom CTA Block with Authentic Photo */}
+      <section className="bg-gradient-to-r from-jevelin-dark via-slate-900 to-navy-950 py-16 text-white border-t border-slate-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 space-y-5 text-left">
+              <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-accent-300 block">
+                {language === 'fr' ? 'ACCOMPAGNEMENT SUR MESURE' : 'TAILORED SUPPORT'}
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-extrabold font-heading text-white">
+                {language === 'fr'
+                  ? 'Un besoin spécifique ou une formalité complexe ?'
+                  : 'A Specific Requirement or Custom Procedure?'}
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                {language === 'fr'
+                  ? 'Prenez contact avec notre équipe à Yaoundé. Nous analysons la faisabilité de votre projet, définissons les pièces à réunir et prenons en main votre démarche sans délai.'
+                  : 'Reach out to our team in Yaoundé. We review your requirements, determine the prerequisites, and manage your procedure immediately.'}
+              </p>
+              <div className="pt-2 flex flex-wrap gap-3">
+                <button
+                  onClick={() => openAssistance('')}
+                  className="px-8 py-3.5 rounded-lg font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-jevelin-orange hover:bg-jevelin-orangeHover shadow-md transition"
+                >
+                  {t.navbar.ctaAssistance}
+                </button>
+                <a
+                  href="tel:+237673841821"
+                  className="inline-flex items-center px-6 py-3.5 rounded-lg font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 border border-white/20 transition"
+                >
+                  <PhoneCall className="w-4 h-4 mr-2 text-jevelin-orange" />
+                  <span>+237 673 84 18 21</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 relative">
+              <div className="relative rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl group">
+                <img
+                  src="/asset/executive-portrait-sign.webp"
+                  alt="Conseiller senior 3M Consulting au siège Yaoundé"
+                  className="w-full h-64 sm:h-80 object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4">
+                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded">
+                    CONSEIL DÉDIÉ · YAOUNDÉ
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

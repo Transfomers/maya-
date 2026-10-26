@@ -49,7 +49,7 @@ export const PrivacyPage: React.FC = () => {
                   <strong>3M Consulting SARL</strong><br />
                   Siège social : Omnisport, Rue Foé, Yaoundé, Cameroun.<br />
                   Contact courriel : <a href="mailto:contact@3mconsultingsarl.com" className="text-brand-600 underline">contact@3mconsultingsarl.com</a><br />
-                  Téléphones : +237 698 66 87 61 / +237 673 84 18 21.
+                  Téléphones : +237 673 84 18 21 / +237 698 66 87 61.
                 </>
               ) : (
                 <>
@@ -57,7 +57,7 @@ export const PrivacyPage: React.FC = () => {
                   <strong>3M Consulting SARL</strong><br />
                   Head office: Omnisport, Rue Foé, Yaoundé, Cameroon.<br />
                   Email contact: <a href="mailto:contact@3mconsultingsarl.com" className="text-brand-600 underline">contact@3mconsultingsarl.com</a><br />
-                  Phone lines: +237 698 66 87 61 / +237 673 84 18 21.
+                  Phone lines: +237 673 84 18 21 / +237 698 66 87 61.
                 </>
               )}
             </p>

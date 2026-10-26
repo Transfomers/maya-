@@ -1,0 +1,25 @@
+services:
+  consulting_frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: 3m_consulting_frontend
+    image: 3mconsulting-frontend:latest
+    restart: unless-stopped
+    ports:
+      - "8088:80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.consulting.rule=Host(`3mconsultingsarl.com`) || Host(`www.3mconsultingsarl.com`)"
+      - "traefik.http.routers.consulting.entrypoints=web,websecure"
+      - "traefik.http.routers.consulting.tls=true"
+      - "traefik.http.routers.consulting.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.consulting.service=consulting"
+      - "traefik.http.services.consulting.loadbalancer.server.port=80"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

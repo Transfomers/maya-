@@ -32,6 +32,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { SEOHead } from '../components/SEOHead';
 import { RequestAssistanceModal } from '../components/RequestAssistanceModal';
 import { submitContact } from '../services/api';
+import { SERVICE_ID_TO_CANONICAL } from '../content/servicesSeoData';
 
 const SERVICE_ICONS: Record<string, React.ElementType> = {
   Building2,
@@ -497,17 +498,17 @@ export const HomePage: React.FC = () => {
 
                     <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
                       <Link
-                        to={`/services#${service.id}`}
+                        to={SERVICE_ID_TO_CANONICAL[service.id] || `/services#${service.id}`}
                         className="text-xs font-bold text-jevelin-dark hover:text-jevelin-orange inline-flex items-center space-x-1"
                       >
-                        <span>{language === 'fr' ? 'Détails' : 'Details'}</span>
+                        <span>{language === 'fr' ? 'En savoir plus' : 'Learn more'}</span>
                         <ChevronRight className="w-3.5 h-3.5" />
                       </Link>
                       <button
                         onClick={() => openAssistanceWithService(service.title)}
                         className="text-xs font-bold text-jevelin-orange hover:underline"
                       >
-                        {language === 'fr' ? 'Postuler ↗' : 'Apply ↗'}
+                        {language === 'fr' ? 'Demander un devis ↗' : 'Get a quote ↗'}
                       </button>
                     </div>
                   </div>
@@ -801,9 +802,33 @@ export const HomePage: React.FC = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Coordinates (5 cols) */}
-            <div className="lg:col-span-5 bg-white p-8 border border-slate-100 shadow-sm space-y-6 rounded-2xl">
-              <div>
-                <h3 className="text-xl font-bold font-heading text-jevelin-dark">
+            <div className="lg:col-span-5 space-y-6">
+              {/* Office Plaque Preview Card */}
+              <div className="relative h-52 w-full overflow-hidden rounded-2xl border border-slate-200 shadow-sm group">
+                <img
+                  src="/asset/partner-office-sign-landscape.webp"
+                  alt="3M Consulting SARL Siège Omnisport Yaoundé"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex items-end justify-between p-4">
+                  <div>
+                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded block w-fit mb-1">
+                      SIÈGE OFFICIEL · YAOUNDÉ
+                    </span>
+                    <p className="text-xs font-medium text-slate-200">
+                      Omnisport Rue Foé, Yaoundé
+                    </p>
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-900 bg-jevelin-orange px-2 py-0.5 rounded shadow-xs">
+                    SARL
+                  </span>
+                </div>
+              </div>
+
+              <div className="bg-white p-8 border border-slate-100 shadow-sm space-y-6 rounded-2xl">
+                <div>
+                  <h3 className="text-xl font-bold font-heading text-jevelin-dark">
                   {t.contact.coordinates.title}
                 </h3>
                 <p className="text-xs text-slate-400 mt-1">
@@ -874,11 +899,11 @@ export const HomePage: React.FC = () => {
                       {t.contact.coordinates.phoneLabel}
                     </span>
                     <div className="flex flex-col space-y-1 mt-0.5 font-semibold text-slate-800">
-                      <a href="tel:+237698668761" className="hover:text-jevelin-orange transition">
-                        +237 698 66 87 61
-                      </a>
                       <a href="tel:+237673841821" className="hover:text-jevelin-orange transition">
                         +237 673 84 18 21
+                      </a>
+                      <a href="tel:+237698668761" className="hover:text-jevelin-orange transition text-slate-500 font-normal">
+                        +237 698 66 87 61
                       </a>
                     </div>
                   </div>
@@ -920,7 +945,7 @@ export const HomePage: React.FC = () => {
                       Facebook
                     </a>
                     <a
-                      href="https://wa.me/237698668761"
+                      href="https://wa.me/237673841821"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-3 py-1.5 bg-slate-100 hover:bg-emerald-600 hover:text-white text-xs font-semibold text-slate-700 transition rounded"
@@ -928,7 +953,7 @@ export const HomePage: React.FC = () => {
                       WhatsApp
                     </a>
                     <a
-                      href="https://t.me/+237698668761"
+                      href="https://t.me/+237673841821"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-3 py-1.5 bg-slate-100 hover:bg-sky-500 hover:text-white text-xs font-semibold text-slate-700 transition rounded"
@@ -955,6 +980,7 @@ export const HomePage: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
 
             {/* Right Form (7 cols) */}
             <div className="lg:col-span-7 bg-white p-8 sm:p-10 border border-slate-100 shadow-sm rounded-2xl">

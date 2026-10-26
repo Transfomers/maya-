@@ -90,10 +90,10 @@ export const Footer: React.FC = () => {
                   {language === 'fr' ? 'TÉLÉPHONE' : 'TELEPHONE'}
                 </span>
                 <a
-                  href="tel:+237698668761"
+                  href="tel:+237673841821"
                   className="font-semibold text-slate-900 hover:text-jevelin-orange transition-colors"
                 >
-                  +237 698 66 87 61
+                  +237 673 84 18 21
                 </a>
               </div>
             </div>
@@ -110,6 +110,54 @@ export const Footer: React.FC = () => {
                 <span className="font-semibold text-slate-900">Lun–Ven: 7h30–17h30</span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 
+        =========================================================================
+        OFFICE LOCATION MAP STRIP — Omnisport Rue Foé, Yaoundé
+        =========================================================================
+      */}
+      <div className="bg-slate-900 border-t border-slate-800 py-10 px-4 sm:px-6 lg:px-8 text-white">
+        <div className="max-w-7xl mx-auto space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-jevelin-orange block font-heading">
+                {language === 'fr' ? 'SIÈGE SOCIAL · YAOUNDÉ, CAMEROUN' : 'HEAD OFFICE · YAOUNDÉ, CAMEROON'}
+              </span>
+              <h3 className="text-xl sm:text-2xl font-bold font-heading text-white mt-1">
+                {language === 'fr' ? 'Plan d’Accès au Siège — Omnisport Rue Foé' : 'Office Access Map — Omnisport Rue Foé'}
+              </h3>
+              <p className="text-xs text-slate-400 mt-1 flex items-center space-x-1.5">
+                <MapPin className="w-3.5 h-3.5 text-jevelin-orange flex-shrink-0" />
+                <span>
+                  {language === 'fr'
+                    ? 'Omnisport Rue Foé, Yaoundé — À proximité du Stade Omnisport (B.P. 35216 Yaoundé)'
+                    : 'Omnisport Rue Foé, Yaoundé — Near Omnisport Stadium (P.O. Box 35216 Yaoundé)'}
+                </span>
+              </p>
+            </div>
+            <a
+              href="https://maps.google.com/?q=Omnisport+Rue+Foé,+Yaoundé,+Cameroun"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg text-xs font-bold transition self-start sm:self-auto"
+            >
+              <span>{language === 'fr' ? 'Ouvrir l’itinéraire Google Maps' : 'Open in Google Maps'}</span>
+              <ExternalLink className="w-3.5 h-3.5 ml-2 opacity-80" />
+            </a>
+          </div>
+
+          <div className="w-full h-64 sm:h-80 rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-slate-950 relative">
+            <iframe
+              title="3M Consulting SARL Siège Yaoundé Google Maps"
+              src="https://maps.google.com/maps?q=Omnisport+Rue+Fo%C3%A9,+Yaound%C3%A9,+Cameroun&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              className="w-full h-full border-0"
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </div>
