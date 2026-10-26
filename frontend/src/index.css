@@ -20,23 +20,23 @@
     letter-spacing: -0.015em;
   }
 
-  /* Clean selection color */
+  /* Clean golden yellow selection color */
   ::selection {
-    background: rgba(239, 68, 68, 0.2);
-    color: #1e2430;
+    background: rgba(255, 173, 2, 0.28);
+    color: #0f172a;
   }
 
-  /* Red custom cursor across page and interactive elements */
+  /* Golden yellow custom cursor across page and interactive elements */
   *, input, textarea, select {
-    caret-color: #ef4444;
+    caret-color: #E69D00;
   }
 
   html, body {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='%23ef4444' stroke='%23ffffff' stroke-width='1.5'%3E%3Cpath d='M3 3l7 18 3-7 7-3L3 3z'/%3E%3C/svg%3E"), auto;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='%23FFAD02' stroke='%230f172a' stroke-width='1.5'%3E%3Cpath d='M3 3l7 18 3-7 7-3L3 3z'/%3E%3C/svg%3E"), auto;
   }
 
   a, button, [role="button"], input[type="submit"], input[type="button"], select, .cursor-pointer {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='%23dc2626' stroke='%23ffffff' stroke-width='1.5'%3E%3Cpath d='M3 3l7 18 3-7 7-3L3 3z'/%3E%3C/svg%3E"), pointer !important;
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='%23F59E0B' stroke='%230f172a' stroke-width='1.5'%3E%3Cpath d='M3 3l7 18 3-7 7-3L3 3z'/%3E%3C/svg%3E"), pointer !important;
   }
 }
 

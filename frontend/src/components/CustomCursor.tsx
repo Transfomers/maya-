@@ -64,9 +64,9 @@ export const CustomCursor: React.FC = () => {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[999999] overflow-hidden">
-      {/* Outer Red Ring */}
+      {/* Outer Golden Yellow Ring */}
       <div
-        className="fixed rounded-full border-2 border-red-500 bg-red-500/10 transition-transform duration-100 ease-out"
+        className="fixed rounded-full border-2 border-[#FFAD02] bg-[#FFAD02]/15 transition-transform duration-100 ease-out"
         style={{
           left: `${trailingPos.x}px`,
           top: `${trailingPos.y}px`,
@@ -74,13 +74,13 @@ export const CustomCursor: React.FC = () => {
           height: isPointer ? '38px' : '26px',
           transform: 'translate(-50%, -50%)',
           boxShadow: isPointer
-            ? '0 0 14px rgba(239, 68, 68, 0.45)'
-            : '0 0 8px rgba(239, 68, 68, 0.25)',
+            ? '0 0 16px rgba(255, 173, 2, 0.65)'
+            : '0 0 8px rgba(255, 173, 2, 0.35)',
         }}
       />
-      {/* Central Red Dot */}
+      {/* Central Golden Yellow Dot */}
       <div
-        className="fixed rounded-full bg-red-600 shadow-xs transition-transform duration-75"
+        className="fixed rounded-full bg-[#E69D00] shadow-xs transition-transform duration-75"
         style={{
           left: `${position.x}px`,
           top: `${position.y}px`,
