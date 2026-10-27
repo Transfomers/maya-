@@ -46,7 +46,7 @@ export const AdminLoginPage: React.FC = () => {
           Espace Administration
         </h2>
         <p className="mt-2 text-xs text-slate-400">
-          Association Cap Entrepreneurs — Accès Réservé
+          Association Cap Entrepreneurs - Accès Réservé
         </p>
       </div>
 

@@ -148,7 +148,7 @@ export const AdminDashboardPage: React.FC = () => {
   const handleLogout = async () => {
     try {
       await adminLogoutApi();
-    } catch {}
+    } catch { }
     clearAdminSession();
     navigate('/admin/login');
   };
@@ -256,7 +256,7 @@ export const AdminDashboardPage: React.FC = () => {
       await updateAdminContactStatus(id, newStatus);
       loadContacts();
       loadStats();
-    } catch {}
+    } catch { }
   };
 
   const getStatusColor = (status: string) => {
@@ -288,7 +288,7 @@ export const AdminDashboardPage: React.FC = () => {
               CE
             </div>
             <span className="font-bold text-sm sm:text-base tracking-tight">
-              Cap Entrepreneurs — Administration
+              Cap Entrepreneurs - Administration
             </span>
           </div>
 
@@ -380,33 +380,30 @@ export const AdminDashboardPage: React.FC = () => {
         <div className="flex border-b border-slate-200 bg-white rounded-t-2xl px-4 pt-2 space-x-4 overflow-x-auto">
           <button
             onClick={() => setActiveTab('registrations')}
-            className={`py-3 px-4 text-sm font-semibold border-b-2 whitespace-nowrap transition ${
-              activeTab === 'registrations'
+            className={`py-3 px-4 text-sm font-semibold border-b-2 whitespace-nowrap transition ${activeTab === 'registrations'
                 ? 'border-brand-600 text-brand-600'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
-            }`}
+              }`}
           >
             Inscriptions ({stats?.total_registrations || 0})
           </button>
 
           <button
             onClick={() => setActiveTab('sessions')}
-            className={`py-3 px-4 text-sm font-semibold border-b-2 whitespace-nowrap transition ${
-              activeTab === 'sessions'
+            className={`py-3 px-4 text-sm font-semibold border-b-2 whitespace-nowrap transition ${activeTab === 'sessions'
                 ? 'border-brand-600 text-brand-600'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
-            }`}
+              }`}
           >
             Sessions Teams ({sessions.length})
           </button>
 
           <button
             onClick={() => setActiveTab('integrations')}
-            className={`py-3 px-4 text-sm font-semibold border-b-2 whitespace-nowrap transition flex items-center ${
-              activeTab === 'integrations'
+            className={`py-3 px-4 text-sm font-semibold border-b-2 whitespace-nowrap transition flex items-center ${activeTab === 'integrations'
                 ? 'border-brand-600 text-brand-600'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
-            }`}
+              }`}
           >
             <span>Power Automate & Logs</span>
             {stats && stats.failed_integrations > 0 && (
@@ -418,11 +415,10 @@ export const AdminDashboardPage: React.FC = () => {
 
           <button
             onClick={() => setActiveTab('contacts')}
-            className={`py-3 px-4 text-sm font-semibold border-b-2 whitespace-nowrap transition ${
-              activeTab === 'contacts'
+            className={`py-3 px-4 text-sm font-semibold border-b-2 whitespace-nowrap transition ${activeTab === 'contacts'
                 ? 'border-brand-600 text-brand-600'
                 : 'border-transparent text-slate-600 hover:text-slate-900'
-            }`}
+              }`}
           >
             Messages reçus ({contactMessages.length})
           </button>
@@ -601,19 +597,17 @@ export const AdminDashboardPage: React.FC = () => {
               {sessions.map((sess) => (
                 <div
                   key={sess.id}
-                  className={`p-6 rounded-2xl border transition ${
-                    sess.is_published
+                  className={`p-6 rounded-2xl border transition ${sess.is_published
                       ? 'border-slate-200 bg-white shadow-xs'
                       : 'border-slate-200 bg-slate-50 opacity-80'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <span
-                      className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${
-                        sess.is_published
+                      className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${sess.is_published
                           ? 'bg-emerald-100 text-emerald-800'
                           : 'bg-slate-200 text-slate-600'
-                      }`}
+                        }`}
                     >
                       {sess.is_published ? 'Publiée' : 'Brouillon'}
                     </span>
@@ -712,15 +706,14 @@ export const AdminDashboardPage: React.FC = () => {
                         <td className="py-3 px-4 font-medium text-slate-900">{log.event_type}</td>
                         <td className="py-3 px-4">
                           <span
-                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
-                              log.status === 'success'
+                            className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${log.status === 'success'
                                 ? 'bg-emerald-100 text-emerald-800'
                                 : log.status === 'failed'
-                                ? 'bg-rose-100 text-rose-800'
-                                : log.status === 'retried'
-                                ? 'bg-indigo-100 text-indigo-800'
-                                : 'bg-amber-100 text-amber-800'
-                            }`}
+                                  ? 'bg-rose-100 text-rose-800'
+                                  : log.status === 'retried'
+                                    ? 'bg-indigo-100 text-indigo-800'
+                                    : 'bg-amber-100 text-amber-800'
+                              }`}
                           >
                             {log.status}
                           </span>
@@ -774,7 +767,7 @@ export const AdminDashboardPage: React.FC = () => {
                   <div key={msg.id} className="p-5 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-3">
                     <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
                       <div className="font-bold text-slate-900 text-sm">
-                        {msg.subject} <span className="font-normal text-slate-500">— de {msg.name} ({msg.email})</span>
+                        {msg.subject} <span className="font-normal text-slate-500">- de {msg.name} ({msg.email})</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <select

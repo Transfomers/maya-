@@ -162,7 +162,7 @@ export const HomePage: React.FC = () => {
       <SEOHead page="home" />
 
       {/* =========================================================================
-          SECTION 01 · HERO — Jevelin style with real team photo
+          SECTION 01 · HERO - Jevelin style with real team photo
           ========================================================================= */}
       <section className="relative overflow-hidden min-h-[85vh] flex items-center">
         {/* Background Image */}
@@ -196,7 +196,7 @@ export const HomePage: React.FC = () => {
                   : '3 M   C O N S U L T I N G   ·   S A R L'}
               </p>
 
-              {/* Main Heading — Jevelin-style ultra bold */}
+              {/* Main Heading - Jevelin-style ultra bold */}
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.3rem] font-black font-heading text-jevelin-dark tracking-tight leading-[1.08] uppercase">
                 {t.hero.title}
               </h1>
@@ -270,7 +270,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          STAT COUNTER BAR — Floating white strip (Jevelin style)
+          STAT COUNTER BAR - Floating white strip (Jevelin style)
           ========================================================================= */}
       <div className="relative z-20 bg-white border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
@@ -335,7 +335,7 @@ export const HomePage: React.FC = () => {
       </div>
 
       {/* =========================================================================
-          SECTION 02 · INTRODUCTION — "Ce que nous vous offrons"
+          SECTION 02 · INTRODUCTION - "Ce que nous vous offrons"
           ========================================================================= */}
       <section className="py-24 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
@@ -403,7 +403,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          ALL 7 PRACTICE AREAS — Filterable Cards
+          ALL 7 PRACTICE AREAS - Filterable Cards
           ========================================================================= */}
       <section className="py-24 lg:py-28 bg-[#f6f7f9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -433,11 +433,10 @@ export const HomePage: React.FC = () => {
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`text-xs font-bold uppercase tracking-[0.12em] py-2 transition-all relative ${
-                  activeTab === tab.id
+                className={`text-xs font-bold uppercase tracking-[0.12em] py-2 transition-all relative ${activeTab === tab.id
                     ? 'text-jevelin-orange'
                     : 'text-slate-500 hover:text-jevelin-dark'
-                }`}
+                  }`}
               >
                 <span>{tab.label}</span>
                 {activeTab === tab.id && (
@@ -530,7 +529,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          SECTION 03 · HOW WE WORK — Timeline with Mandela quote
+          SECTION 03 · HOW WE WORK - Timeline with Mandela quote
           ========================================================================= */}
       <section className="py-24 lg:py-28 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
@@ -559,9 +558,8 @@ export const HomePage: React.FC = () => {
                 return (
                   <div
                     key={step.number}
-                    className={`relative md:flex items-center ${
-                      isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
-                    } md:mb-16 last:mb-0`}
+                    className={`relative md:flex items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+                      } md:mb-16 last:mb-0`}
                   >
                     <div className={`md:w-5/12 ${isLeft ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
                       <div className="bg-white p-8 border border-slate-100 shadow-sm hover:shadow-lg transition-shadow duration-300 group rounded-xl">
@@ -597,7 +595,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          QUOTE SECTION — Nelson Mandela Quote
+          QUOTE SECTION - Nelson Mandela Quote
           ========================================================================= */}
       <section className="py-20 bg-slate-50 text-center border-y border-slate-200/80">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
@@ -722,7 +720,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          SECTION 05 · EASIEST WAY TO START — 4 Steps + 3mconsulting.digital
+          SECTION 05 · EASIEST WAY TO START - 4 Steps + 3mconsulting.digital
           ========================================================================= */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -829,158 +827,158 @@ export const HomePage: React.FC = () => {
               <div className="bg-white p-8 border border-slate-100 shadow-sm space-y-6 rounded-2xl">
                 <div>
                   <h3 className="text-xl font-bold font-heading text-jevelin-dark">
-                  {t.contact.coordinates.title}
-                </h3>
-                <p className="text-xs text-slate-400 mt-1">
-                  3M Consulting SARL · Yaoundé, Cameroun
-                </p>
-              </div>
-
-              <div className="space-y-5 text-sm">
-                {/* Address */}
-                <div className="flex items-start space-x-4">
-                  <div className="w-9 h-9 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 block">
-                      {t.contact.coordinates.addressLabel}
-                    </span>
-                    <span className="font-semibold text-slate-800">
-                      {t.contact.coordinates.addressValue}
-                    </span>
-                  </div>
+                    {t.contact.coordinates.title}
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-1">
+                    3M Consulting SARL · Yaoundé, Cameroun
+                  </p>
                 </div>
 
-                {/* Email with copy */}
-                <div className="flex items-start space-x-4">
-                  <div className="w-9 h-9 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Mail className="w-4 h-4" />
+                <div className="space-y-5 text-sm">
+                  {/* Address */}
+                  <div className="flex items-start space-x-4">
+                    <div className="w-9 h-9 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 block">
+                        {t.contact.coordinates.addressLabel}
+                      </span>
+                      <span className="font-semibold text-slate-800">
+                        {t.contact.coordinates.addressValue}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 block">
-                      {t.contact.coordinates.emailLabel}
+
+                  {/* Email with copy */}
+                  <div className="flex items-start space-x-4">
+                    <div className="w-9 h-9 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 block">
+                        {t.contact.coordinates.emailLabel}
+                      </span>
+                      <div className="flex flex-wrap items-center gap-2 mt-0.5">
+                        <a
+                          href="mailto:contact@3mconsultingsarl.com"
+                          className="font-semibold text-slate-900 hover:text-jevelin-orange transition-colors"
+                        >
+                          contact@3mconsultingsarl.com
+                        </a>
+                        <button
+                          type="button"
+                          onClick={handleCopyEmail}
+                          className="inline-flex items-center px-2.5 py-1 text-[11px] font-medium bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 transition rounded"
+                        >
+                          {copiedEmail ? (
+                            <>
+                              <Check className="w-3 h-3 mr-1 text-emerald-600" />
+                              <span>{t.contact.coordinates.copiedEmailBtn}</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-3 h-3 mr-1 text-slate-500" />
+                              <span>{t.contact.coordinates.copyEmailBtn}</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Phones */}
+                  <div className="flex items-start space-x-4">
+                    <div className="w-9 h-9 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 block">
+                        {t.contact.coordinates.phoneLabel}
+                      </span>
+                      <div className="flex flex-col space-y-1 mt-0.5 font-semibold text-slate-800">
+                        <a href="tel:+237673841821" className="hover:text-jevelin-orange transition">
+                          +237 673 84 18 21
+                        </a>
+                        <a href="tel:+237698668761" className="hover:text-jevelin-orange transition text-slate-500 font-normal">
+                          +237 698 66 87 61
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Hours */}
+                  <div className="flex items-start space-x-4 pt-4 border-t border-slate-100">
+                    <div className="w-9 h-9 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Clock className="w-4 h-4" />
+                    </div>
+                    <div className="text-xs space-y-1">
+                      <span className="font-bold uppercase tracking-[0.15em] text-slate-400 block">
+                        {t.contact.coordinates.hoursLabel}
+                      </span>
+                      <p className="font-semibold text-slate-800">
+                        {t.contact.coordinates.hoursWeekday}
+                      </p>
+                      <p className="text-slate-500">
+                        {t.contact.coordinates.hoursSaturday}
+                      </p>
+                      <p className="text-slate-400 italic">
+                        {t.contact.coordinates.hoursSunday}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Direct & Social Channels */}
+                  <div className="pt-4 border-t border-slate-100 space-y-2">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 block">
+                      {language === 'fr' ? 'Réseaux Sociaux & Canaux Directs' : 'Social & Direct Channels'}
                     </span>
-                    <div className="flex flex-wrap items-center gap-2 mt-0.5">
+                    <div className="flex flex-wrap gap-2 pt-1">
                       <a
-                        href="mailto:contact@3mconsultingsarl.com"
-                        className="font-semibold text-slate-900 hover:text-jevelin-orange transition-colors"
+                        href={t.contact.coordinates.socialFacebookUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 bg-slate-100 hover:bg-[#1877F2] hover:text-white text-xs font-semibold text-slate-700 transition rounded"
                       >
-                        contact@3mconsultingsarl.com
+                        Facebook
                       </a>
-                      <button
-                        type="button"
-                        onClick={handleCopyEmail}
-                        className="inline-flex items-center px-2.5 py-1 text-[11px] font-medium bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 transition rounded"
+                      <a
+                        href={t.contact.coordinates.socialTikTokUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 bg-slate-100 hover:bg-[#EE1D52] hover:text-white text-xs font-semibold text-slate-700 transition rounded"
                       >
-                        {copiedEmail ? (
-                          <>
-                            <Check className="w-3 h-3 mr-1 text-emerald-600" />
-                            <span>{t.contact.coordinates.copiedEmailBtn}</span>
-                          </>
-                        ) : (
-                          <>
-                            <Copy className="w-3 h-3 mr-1 text-slate-500" />
-                            <span>{t.contact.coordinates.copyEmailBtn}</span>
-                          </>
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Phones */}
-                <div className="flex items-start space-x-4">
-                  <div className="w-9 h-9 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 block">
-                      {t.contact.coordinates.phoneLabel}
-                    </span>
-                    <div className="flex flex-col space-y-1 mt-0.5 font-semibold text-slate-800">
-                      <a href="tel:+237673841821" className="hover:text-jevelin-orange transition">
-                        +237 673 84 18 21
+                        TikTok
                       </a>
-                      <a href="tel:+237698668761" className="hover:text-jevelin-orange transition text-slate-500 font-normal">
-                        +237 698 66 87 61
+                      <a
+                        href="https://wa.me/237673841821"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 bg-slate-100 hover:bg-emerald-600 hover:text-white text-xs font-semibold text-slate-700 transition rounded"
+                      >
+                        WhatsApp
+                      </a>
+                      <a
+                        href="https://t.me/+237673841821"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 bg-slate-100 hover:bg-sky-500 hover:text-white text-xs font-semibold text-slate-700 transition rounded"
+                      >
+                        Telegram
+                      </a>
+                      <a
+                        href="https://linkedin.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 py-1.5 bg-slate-100 hover:bg-blue-700 hover:text-white text-xs font-semibold text-slate-700 transition rounded"
+                      >
+                        LinkedIn
                       </a>
                     </div>
-                  </div>
-                </div>
-
-                {/* Hours */}
-                <div className="flex items-start space-x-4 pt-4 border-t border-slate-100">
-                  <div className="w-9 h-9 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Clock className="w-4 h-4" />
-                  </div>
-                  <div className="text-xs space-y-1">
-                    <span className="font-bold uppercase tracking-[0.15em] text-slate-400 block">
-                      {t.contact.coordinates.hoursLabel}
-                    </span>
-                    <p className="font-semibold text-slate-800">
-                      {t.contact.coordinates.hoursWeekday}
-                    </p>
-                    <p className="text-slate-500">
-                      {t.contact.coordinates.hoursSaturday}
-                    </p>
-                    <p className="text-slate-400 italic">
-                      {t.contact.coordinates.hoursSunday}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Direct & Social Channels */}
-                <div className="pt-4 border-t border-slate-100 space-y-2">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 block">
-                    {language === 'fr' ? 'Réseaux Sociaux & Canaux Directs' : 'Social & Direct Channels'}
-                  </span>
-                  <div className="flex flex-wrap gap-2 pt-1">
-                    <a
-                      href={t.contact.coordinates.socialFacebookUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-slate-100 hover:bg-[#1877F2] hover:text-white text-xs font-semibold text-slate-700 transition rounded"
-                    >
-                      Facebook
-                    </a>
-                    <a
-                      href={t.contact.coordinates.socialTikTokUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-slate-100 hover:bg-[#EE1D52] hover:text-white text-xs font-semibold text-slate-700 transition rounded"
-                    >
-                      TikTok
-                    </a>
-                    <a
-                      href="https://wa.me/237673841821"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-slate-100 hover:bg-emerald-600 hover:text-white text-xs font-semibold text-slate-700 transition rounded"
-                    >
-                      WhatsApp
-                    </a>
-                    <a
-                      href="https://t.me/+237673841821"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-slate-100 hover:bg-sky-500 hover:text-white text-xs font-semibold text-slate-700 transition rounded"
-                    >
-                      Telegram
-                    </a>
-                    <a
-                      href="https://linkedin.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 bg-slate-100 hover:bg-blue-700 hover:text-white text-xs font-semibold text-slate-700 transition rounded"
-                    >
-                      LinkedIn
-                    </a>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
             {/* Right Form (7 cols) */}
             <div className="lg:col-span-7 bg-white p-8 sm:p-10 border border-slate-100 shadow-sm rounded-2xl">

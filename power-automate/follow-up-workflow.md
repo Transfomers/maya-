@@ -32,7 +32,7 @@ This workflow enables the onboarding team to trigger automated or manual task as
       "type": "TextBlock",
       "size": "Medium",
       "weight": "Bolder",
-      "text": "Suivi Requis — Nouvel Arrivant"
+      "text": "Suivi Requis - Nouvel Arrivant"
     },
     {
       "type": "FactSet",

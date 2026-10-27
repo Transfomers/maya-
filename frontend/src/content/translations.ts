@@ -446,7 +446,7 @@ export const translations: Record<Language, TranslationData> = {
     },
     canEvent: {
       badge: "Offre Événementielle & Accueil",
-      title: "Accompagnement Événements & Séjours — CAN TotalEnergies",
+      title: "Accompagnement Événements & Séjours - CAN TotalEnergies",
       desc: "3M Consulting vous accompagne pour vos séjours professionnels et événementiels en Côte d'Ivoire et dans la sous-région. Pour cela, nous vous proposons différents packages d'hébergement et de services pour un séjour agréable et sécurisé.",
       packagesTitle: "Nos 4 Formules Packages",
       learnMore: "Demander des informations sur les packages ↗",
@@ -836,7 +836,7 @@ export const translations: Record<Language, TranslationData> = {
     },
     canEvent: {
       badge: "Event Hospitality & Concierge",
-      title: "Event Hospitality & Travel Packages — CAN TotalEnergies",
+      title: "Event Hospitality & Travel Packages - CAN TotalEnergies",
       desc: "3M Consulting supports your corporate and event stays in Ivory Coast and across the region during major sporting and business events. We offer dedicated hospitality and support packages for an enjoyable, seamless journey.",
       packagesTitle: "Our 4 Curated Packages",
       learnMore: "Request Information on Packages ↗",

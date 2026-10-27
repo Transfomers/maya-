@@ -94,7 +94,7 @@ This guide describes how to build and configure the **New Registration** Power A
 ### Step 2: Action - Send Newcomer Confirmation Email (V2)
 - **Connector**: Office 365 Outlook -> `Send an email (V2)`
 - **To**: `triggerBody()?['registration']?['email']`
-- **Subject**: `Bienvenue chez Association Cap Entrepreneurs — Référence @{triggerBody()?['registration']?['reference']}`
+- **Subject**: `Bienvenue chez Association Cap Entrepreneurs - Référence @{triggerBody()?['registration']?['reference']}`
 - **Body (HTML)**:
 ```html
 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px;">
@@ -123,7 +123,7 @@ This guide describes how to build and configure the **New Registration** Power A
 
   <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 30px 0;" />
   <p style="font-size: 12px; color: #94a3b8;">
-    Association Cap Entrepreneurs — <a href="https://capentrepreneurs.org" style="color: #64748b;">capentrepreneurs.org</a><br/>
+    Association Cap Entrepreneurs - <a href="https://capentrepreneurs.org" style="color: #64748b;">capentrepreneurs.org</a><br/>
     Pour toute question, écrivez-nous à <a href="mailto:contact@capentrepreneurs.org" style="color: #64748b;">contact@capentrepreneurs.org</a>.<br/>
     Conformément à notre politique de confidentialité, vous disposez d'un droit d'accès et de modification de vos données.
   </p>

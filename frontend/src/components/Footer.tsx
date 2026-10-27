@@ -108,7 +108,7 @@ export const Footer: React.FC = () => {
                 <span className="font-bold uppercase tracking-[0.15em] text-slate-400 block text-[10px]">
                   {language === 'fr' ? 'HORAIRES' : 'WORK HOURS'}
                 </span>
-                <span className="font-semibold text-slate-900">Lun–Ven: 7h30–17h30</span>
+                <span className="font-semibold text-slate-900">Lun-Ven: 7h30-17h30</span>
               </div>
             </div>
           </div>
@@ -117,7 +117,7 @@ export const Footer: React.FC = () => {
 
       {/* 
         =========================================================================
-        OFFICE LOCATION MAP STRIP — Omnisport Rue Foé, Yaoundé
+        OFFICE LOCATION MAP STRIP - Omnisport Rue Foé, Yaoundé
         =========================================================================
       */}
       <div className="bg-slate-900 border-t border-slate-800 py-10 px-4 sm:px-6 lg:px-8 text-white">
@@ -128,19 +128,19 @@ export const Footer: React.FC = () => {
                 {language === 'fr' ? 'SIÈGE SOCIAL · YAOUNDÉ, CAMEROUN' : 'HEAD OFFICE · YAOUNDÉ, CAMEROON'}
               </span>
               <h3 className="text-xl sm:text-2xl font-bold font-heading text-white mt-1">
-                {language === 'fr' ? 'Plan d’Accès au Siège — Omnisport Rue Foé' : 'Office Access Map — Omnisport Rue Foé'}
+                {language === 'fr' ? 'Plan d’Accès au Siège - Omnisport Rue Foé' : 'Office Access Map - Omnisport Rue Foé'}
               </h3>
               <p className="text-xs text-slate-400 mt-1 flex items-center space-x-1.5">
                 <MapPin className="w-3.5 h-3.5 text-jevelin-orange flex-shrink-0" />
                 <span>
                   {language === 'fr'
-                    ? 'Omnisport Rue Foé, Yaoundé — À proximité du Stade Omnisport (B.P. 35216 Yaoundé)'
-                    : 'Omnisport Rue Foé, Yaoundé — Near Omnisport Stadium (P.O. Box 35216 Yaoundé)'}
+                    ? 'Omnisport Rue Foé, Yaoundé - À proximité du Stade Omnisport (B.P. 35216 Yaoundé)'
+                    : 'Omnisport Rue Foé, Yaoundé - Near Omnisport Stadium (P.O. Box 35216 Yaoundé)'}
                 </span>
               </p>
             </div>
             <a
-              href="https://maps.google.com/?q=Omnisport+Rue+Foé,+Yaoundé,+Cameroun"
+              href="https://www.google.com/maps?rlz=1C5KXLH_enCM1220CM1220&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQIxgnMgYIAhBFGDsyBggDEEUYOzIHCAQQABiABDIGCAUQRRg8MgYIBhBFGD0yBggHEEUYPNIBCDE2NTFqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=cm&sa=X&geocode=KVNFk2dAxYsQMUOn92OaEc7b&daddr=Rue+Foe+Omnisport,+Yaound%C3%A9"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-4 py-2.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg text-xs font-bold transition self-start sm:self-auto"
@@ -153,7 +153,7 @@ export const Footer: React.FC = () => {
           <div className="w-full h-64 sm:h-80 rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-slate-950 relative">
             <iframe
               title="3M Consulting SARL Siège Yaoundé Google Maps"
-              src="https://maps.google.com/maps?q=Omnisport+Rue+Fo%C3%A9,+Yaound%C3%A9,+Cameroun&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Rue+Foe+Omnisport,+Yaound%C3%A9&t=&z=16&ie=UTF8&iwloc=&output=embed"
               className="w-full h-full border-0"
               loading="lazy"
               allowFullScreen
@@ -165,7 +165,7 @@ export const Footer: React.FC = () => {
 
       {/* 
         =========================================================================
-        DARK FOOTER — Jevelin-style 4-column layout
+        DARK FOOTER - Jevelin-style 4-column layout
         =========================================================================
       */}
       <footer className="bg-jevelin-darker text-slate-400">
@@ -186,7 +186,7 @@ export const Footer: React.FC = () => {
                 </span>
               </div>
 
-              {/* Social Icons — Jevelin bordered circles */}
+              {/* Social Icons - Jevelin bordered circles */}
               <div className="flex items-center space-x-2 pt-2">
                 <a
                   href="https://www.facebook.com/share/1FftJwk51R/?mibextid=wwXIfr"
@@ -197,7 +197,7 @@ export const Footer: React.FC = () => {
                   title="Page Facebook 3M Consulting"
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                 </a>
 
@@ -210,7 +210,7 @@ export const Footer: React.FC = () => {
                   title="TikTok 3M Consulting"
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.5 6.27 6.27 0 0 0 1.95-4.54V8.41a8.28 8.28 0 0 0 4.82 1.54V6.69z"/>
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.5 6.27 6.27 0 0 0 1.95-4.54V8.41a8.28 8.28 0 0 0 4.82 1.54V6.69z" />
                   </svg>
                 </a>
 
@@ -285,7 +285,7 @@ export const Footer: React.FC = () => {
                   title="Page Facebook 3M Consulting"
                 >
                   <svg className="w-3.5 h-3.5 mr-2 fill-current text-[#1877F2]" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                   <span>Facebook</span>
                   <ExternalLink className="w-3 h-3 ml-1.5 opacity-60" />
@@ -299,7 +299,7 @@ export const Footer: React.FC = () => {
                   title="Page TikTok 3M Consulting"
                 >
                   <svg className="w-3.5 h-3.5 mr-2 fill-current text-[#EE1D52]" viewBox="0 0 24 24">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.5 6.27 6.27 0 0 0 1.95-4.54V8.41a8.28 8.28 0 0 0 4.82 1.54V6.69z"/>
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.5 6.27 6.27 0 0 0 1.95-4.54V8.41a8.28 8.28 0 0 0 4.82 1.54V6.69z" />
                   </svg>
                   <span>TikTok</span>
                   <ExternalLink className="w-3 h-3 ml-1.5 opacity-60" />

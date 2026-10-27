@@ -230,7 +230,7 @@ export const ContactPage: React.FC = () => {
                     className="inline-flex items-center px-4 py-2.5 rounded-xl bg-[#1877F2]/10 hover:bg-[#1877F2]/20 text-[#1877F2] font-semibold text-xs border border-[#1877F2]/20 transition"
                   >
                     <svg className="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24">
-                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
                     <span>{t.contact.coordinates.socialFacebookLabel}</span>
                     <ExternalLink className="w-3.5 h-3.5 ml-auto opacity-70" />
@@ -243,7 +243,7 @@ export const ContactPage: React.FC = () => {
                     className="inline-flex items-center px-4 py-2.5 rounded-xl bg-[#EE1D52]/10 hover:bg-[#EE1D52]/20 text-[#EE1D52] font-semibold text-xs border border-[#EE1D52]/20 transition"
                   >
                     <svg className="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24">
-                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.5 6.27 6.27 0 0 0 1.95-4.54V8.41a8.28 8.28 0 0 0 4.82 1.54V6.69z"/>
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.5 6.27 6.27 0 0 0 1.95-4.54V8.41a8.28 8.28 0 0 0 4.82 1.54V6.69z" />
                     </svg>
                     <span>TikTok (3M Consulting)</span>
                     <ExternalLink className="w-3.5 h-3.5 ml-auto opacity-70" />
@@ -436,12 +436,12 @@ export const ContactPage: React.FC = () => {
               <p className="text-xs sm:text-sm text-slate-600 mt-1 flex items-center space-x-1.5">
                 <MapPin className="w-4 h-4 text-jevelin-orange flex-shrink-0" />
                 <span>
-                  Omnisport Rue Foé, Yaoundé, Cameroun — {language === 'fr' ? 'À proximité immédiate du Stade Omnisport' : 'Next to Omnisport Stadium'}
+                  Omnisport Rue Foé, Yaoundé, Cameroun - {language === 'fr' ? 'À proximité immédiate du Stade Omnisport' : 'Next to Omnisport Stadium'}
                 </span>
               </p>
             </div>
             <a
-              href="https://maps.google.com/?q=Omnisport+Rue+Foé,+Yaoundé,+Cameroun"
+              href="https://www.google.com/maps?rlz=1C5KXLH_enCM1220CM1220&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQIxgnMgYIAhBFGDsyBggDEEUYOzIHCAQQABiABDIGCAUQRRg8MgYIBhBFGD0yBggHEEUYPNIBCDE2NTFqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=cm&sa=X&geocode=KVNFk2dAxYsQMUOn92OaEc7b&daddr=Rue+Foe+Omnisport,+Yaound%C3%A9"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center px-4 py-2.5 bg-white border border-slate-200 hover:border-slate-300 rounded-lg text-xs font-bold text-slate-700 hover:text-jevelin-orange transition shadow-xs self-start sm:self-auto"
@@ -455,7 +455,7 @@ export const ContactPage: React.FC = () => {
           <div className="w-full h-[400px] sm:h-[460px] rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-slate-100 relative">
             <iframe
               title={language === 'fr' ? 'Localisation 3M Consulting SARL à Yaoundé' : '3M Consulting SARL Yaoundé Office Location'}
-              src="https://maps.google.com/maps?q=Omnisport+Rue+Fo%C3%A9,+Yaound%C3%A9,+Cameroun&t=&z=16&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Rue+Foe+Omnisport,+Yaound%C3%A9&t=&z=16&ie=UTF8&iwloc=&output=embed"
               className="w-full h-full border-0"
               loading="lazy"
               allowFullScreen

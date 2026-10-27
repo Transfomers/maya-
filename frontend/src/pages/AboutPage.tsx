@@ -135,7 +135,7 @@ export const AboutPage: React.FC = () => {
           </div>
 
           {/* =========================================================================
-              PDG / LEADERSHIP SECTION — M. MONROI MAYA MICHAEL
+              PDG / LEADERSHIP SECTION - M. MONROI MAYA MICHAEL
               ========================================================================= */}
           <div className="bg-gradient-to-br from-jevelin-dark via-navy-900 to-navy-950 text-white rounded-3xl p-8 sm:p-12 lg:p-14 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-jevelin-orange/10 rounded-full blur-3xl pointer-events-none" />
@@ -234,7 +234,7 @@ export const AboutPage: React.FC = () => {
           </div>
 
           {/* =========================================================================
-              JEVELIN-STYLE TEAM SHOWCASE — Nos Consultants & Experts
+              JEVELIN-STYLE TEAM SHOWCASE - Nos Consultants & Experts
               ========================================================================= */}
           <div className="space-y-10">
             <div className="text-center space-y-3">
@@ -402,7 +402,7 @@ export const AboutPage: React.FC = () => {
                       {language === 'fr' ? 'Horaires d’accueil' : 'Opening Hours'}
                     </strong>
                     <span className="text-xs text-slate-500">
-                      Lundi – Vendredi : 7h30 à 17h30 | Samedi : 8h00 à 14h30
+                      Lundi - Vendredi : 7h30 à 17h30 | Samedi : 8h00 à 14h30
                     </span>
                   </div>
                 </div>
