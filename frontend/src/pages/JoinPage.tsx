@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
-  ExternalLink,
   Sparkles,
   ArrowRight,
   ShieldCheck,
@@ -84,19 +83,6 @@ export const JoinPage: React.FC = () => {
           <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
             {t.joinUs.intro}
           </p>
-
-          {/* 3M Consulting Digital Official Link */}
-          <div className="pt-2">
-            <a
-              href="https://3mconsulting.digital/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:text-jevelin-orange hover:border-slate-300 transition shadow-xs"
-            >
-              <span>{t.joinUs.digitalPlatformBtn}</span>
-              <ExternalLink className="w-3.5 h-3.5 ml-2 opacity-70" />
-            </a>
-          </div>
         </div>
       </section>
 

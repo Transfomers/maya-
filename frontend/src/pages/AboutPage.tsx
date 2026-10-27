@@ -122,12 +122,12 @@ export const AboutPage: React.FC = () => {
 
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
                   <span className="text-xs font-bold text-jevelin-dark block">
-                    {language === 'fr' ? 'Plateforme 3mconsulting.digital' : '3mconsulting.digital Platform'}
+                    {language === 'fr' ? 'Accompagnement & Réactivité' : 'Advisory & Responsiveness'}
                   </span>
                   <p className="text-xs text-slate-500 mt-1">
                     {language === 'fr'
-                      ? 'Accès digitalisé à des experts en un seul clic pour clients et consultants.'
-                      : 'Digital access to specialized consultants in one click.'}
+                      ? 'Accès rapide à des experts pour le traitement et le suivi rigoureux de vos dossiers.'
+                      : 'Rapid access to senior consultants for file processing and diligent follow-up.'}
                   </p>
                 </div>
               </div>
@@ -192,7 +192,7 @@ export const AboutPage: React.FC = () => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <span className="w-2 h-2 rounded-full bg-accent-400" />
-                    <span>Initiateur de 3mconsulting.digital</span>
+                    <span>Stratégie d'Entreprise & Conseil</span>
                   </div>
                 </div>
               </div>
@@ -433,7 +433,7 @@ export const AboutPage: React.FC = () => {
 
             <div className="pt-4 border-t border-slate-200 flex flex-wrap gap-4 items-center justify-between">
               <span className="text-xs text-slate-500">
-                Site officiel : <strong className="text-jevelin-dark">3mconsultingsarl.com</strong> · Portail : <strong className="text-jevelin-dark">3mconsulting.digital</strong>
+                Site officiel : <strong className="text-jevelin-dark">3mconsultingsarl.com</strong>
               </span>
               <Link
                 to="/services"

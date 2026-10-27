@@ -22,12 +22,12 @@ const PAGE_KEYWORDS: Record<string, { fr: string; en: string }> = {
     en: "business incorporation Cameroon, RCCM registry Yaoundé, commercial lease Yaoundé, ministerial license Cameroon, monthly tax filing DGI, DSF report Cameroon, tender DAO bids Yaoundé",
   },
   about: {
-    fr: "cabinet 3M Consulting SARL, Monroi Maya Michael, histoire 3M Consulting Yaoundé, experts conseil Cameroun, 3mconsulting digital, fiduciaire Yaoundé Omnisport",
-    en: "3M Consulting SARL firm, Monroi Maya Michael CEO, 3M Consulting history Yaoundé, corporate advisors Cameroon, 3mconsulting digital, advisory firm Yaoundé Omnisport",
+    fr: "cabinet 3M Consulting SARL, Monroi Maya Michael, histoire 3M Consulting Yaoundé, experts conseil Cameroun, fiduciaire Yaoundé Omnisport",
+    en: "3M Consulting SARL firm, Monroi Maya Michael CEO, 3M Consulting history Yaoundé, corporate advisors Cameroon, advisory firm Yaoundé Omnisport",
   },
   join: {
-    fr: "devenir client 3M Consulting, recrutement consultant Yaoundé, opportunités conseil Cameroun, inscription 3mconsulting digital, réseau experts d'affaires",
-    en: "become a client 3M Consulting, consultant recruitment Yaoundé, advisory opportunities Cameroon, 3mconsulting digital signup, business experts network",
+    fr: "devenir client 3M Consulting, recrutement consultant Yaoundé, opportunités conseil Cameroun, inscription 3M Consulting, réseau experts d'affaires",
+    en: "become a client 3M Consulting, consultant recruitment Yaoundé, advisory opportunities Cameroon, 3M Consulting signup, business experts network",
   },
   contact: {
     fr: "contact 3M Consulting, adresse Omnisport Rue Foé Yaoundé, téléphone conseil entreprise Yaoundé, email contact@3mconsultingsarl.com",
@@ -236,7 +236,6 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
           'https://www.facebook.com/share/1FftJwk51R/?mibextid=wwXIfr',
           'https://vt.tiktok.com/ZSgXqLqXu/',
           'https://3mconsultingsarl.com',
-          'https://3mconsulting.digital/',
         ],
       },
       {
