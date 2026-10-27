@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import { MainLayout } from './layouts/MainLayout';
 import { HomePage } from './pages/HomePage';
-import { ProtectedRoute } from './components/ProtectedRoute';
 import { CustomCursor } from './components/CustomCursor';
 
 // Lazy-loaded routes for ultra-fast initial page load
@@ -24,12 +23,6 @@ const ContactPage = lazy(() =>
 );
 const PrivacyPage = lazy(() =>
   import('./pages/PrivacyPage').then((m) => ({ default: m.PrivacyPage }))
-);
-const AdminLoginPage = lazy(() =>
-  import('./pages/AdminLoginPage').then((m) => ({ default: m.AdminLoginPage }))
-);
-const AdminDashboardPage = lazy(() =>
-  import('./pages/AdminDashboardPage').then((m) => ({ default: m.AdminDashboardPage }))
 );
 
 // Lightweight fallback spinner matching brand colors
@@ -89,11 +82,9 @@ export const App: React.FC = () => {
             <Route path="/privacy" element={<PrivacyPage />} />
           </Route>
 
-          {/* Admin Login & Dashboard */}
-          <Route path="/admin/login" element={<AdminLoginPage />} />
-          <Route path="/admin" element={<ProtectedRoute />}>
-            <Route index element={<AdminDashboardPage />} />
-          </Route>
+          {/* Redirect any /admin access to home page */}
+          <Route path="/admin/*" element={<Navigate to="/" replace />} />
+          <Route path="/admin" element={<Navigate to="/" replace />} />
 
           {/* 404 Fallback */}
           <Route path="*" element={<Navigate to="/" replace />} />

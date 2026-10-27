@@ -322,9 +322,6 @@ export const Footer: React.FC = () => {
               <Link to="/contact" className="hover:text-slate-300 transition-colors">
                 {t.navbar.contact}
               </Link>
-              <Link to="/admin" className="text-slate-600 hover:text-slate-400 transition-colors">
-                {t.navbar.admin}
-              </Link>
             </div>
           </div>
         </div>

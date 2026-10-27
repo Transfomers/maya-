@@ -212,7 +212,7 @@ export const translations: Record<Language, TranslationData> = {
       },
       about: {
         title: "À Propos de Nous | Cabinet 3M Consulting & Vision de M. Monroi Maya Michael",
-        desc: "Qui sommes-nous ? Cabinet conseil fondé par M. Monroi Maya Michael à Yaoundé. Expertise financière, rigueur juridique et accompagnement personnalisé.",
+        desc: "Qui sommes-nous ? Cabinet conseil fondé par M. Monroi Maya Michael à Yaoundé. Expertise financière, rigueur juridique et accompagnement en ligne sur 3mconsultingsarl.com.",
       },
       join: {
         title: "Rejoignez-Nous | Espace Clients & Réseau de Consultants | 3M Consulting",
@@ -425,8 +425,8 @@ export const translations: Record<Language, TranslationData> = {
           iconName: "TrendingUp",
         },
         {
-          title: "Conseil digital & Réactivité",
-          description: "Des canaux interactifs et un accompagnement réactif pour initier vos démarches et suivre vos dossiers facilement.",
+          title: "Solutions & Services en ligne sur 3mconsultingsarl.com",
+          description: "Des démarches d'affaires simplifiées et un suivi en ligne réactif de l'ensemble de vos dossiers.",
           iconName: "CheckCircle2",
         },
       ],
@@ -440,7 +440,7 @@ export const translations: Record<Language, TranslationData> = {
       missionDetails: "Grâce à notre équipe d'experts pluridisciplinaires (juristes d'affaires, fiscalistes, spécialistes des marchés publics) et à notre implantation stratégique à Yaoundé Omnisport, nous vous assurons une réactivité immédiate auprès de toutes les administrations clés.",
       ceoTitle: "PDG & Fondateur",
       ceoName: "M. MONROI MAYA MICHAEL",
-      ceoBio: "Financier pragmatique et entrepreneur passionné, M. Monroi Maya Michael allie une solide formation en comptabilité et fiscalité à une spécialisation de haut niveau en finances publiques. Fort de plus de 5 ans de pilotage de projets d'envergure, il a fondé 3M CONSULTING pour apporter aux chefs d'entreprise un conseil moderne, accessible et résolument orienté résultats. Convaincu que l'efficacité et la proximité sont les moteurs de l'économie moderne, il met son expertise et son réseau au service de la réussite pérenne de chaque client.",
+      ceoBio: "Financier pragmatique et entrepreneur passionné, M. Monroi Maya Michael allie une solide formation en comptabilité et fiscalité à une spécialisation de haut niveau en finances publiques. Fort de plus de 5 ans de pilotage de projets d'envergure, il a fondé 3M CONSULTING pour apporter aux chefs d'entreprise un conseil moderne, accessible et résolument orienté résultats. Convaincu que la digitalisation est un levier majeur de performance, il est également l'initiateur du portail 3mconsultingsarl.com, permettant d'accéder aux services d'assistance et d'intermédiation en un clic.",
       presenceTitle: "Siège Stratégique à Yaoundé",
       presenceDesc: "Implanté à Omnisport Rue Foé, le cabinet bénéficie d'une proximité directe avec les ministères, les greffes des tribunaux et les directions générales pour un traitement ultra-rapide de vos dossiers.",
     },
@@ -499,8 +499,8 @@ export const translations: Record<Language, TranslationData> = {
           "Collaboration avec un réseau d'experts pluridisciplinaires réputé",
         ],
       },
-      digitalPlatformNote: "Notre équipe dédiée permet une mise en relation fluide et un démarrage rapide de votre dossier en 4 étapes simples.",
-      digitalPlatformBtn: "Démarrer votre dossier ↗",
+      digitalPlatformNote: "Notre plateforme 3mconsultingsarl.com permet une mise en relation fluide et un démarrage rapide de votre dossier en 4 étapes simples.",
+      digitalPlatformBtn: "Accéder au portail 3mconsultingsarl.com ↗",
     },
     easiestWay: {
       badge: "Parcours Simple & Rapide",
@@ -587,7 +587,7 @@ export const translations: Record<Language, TranslationData> = {
       privacyPolicy: "Politique de Confidentialité",
       officialWebsite: "3mconsultingsarl.com",
       facebookPage: "Page Facebook officielle",
-      digitalPlatform: "Portail 3M Consulting",
+      digitalPlatform: "Portail 3mconsultingsarl.com",
     },
   },
   en: {
@@ -602,7 +602,7 @@ export const translations: Record<Language, TranslationData> = {
       },
       about: {
         title: "About Us | 3M Consulting SARL & CEO M. Monroi Maya Michael",
-        desc: "Who are we? Premier corporate advisory firm founded by M. Monroi Maya Michael in Yaoundé. Financial expertise, legal rigor, and customized corporate guidance.",
+        desc: "Who are we? Premier corporate advisory firm founded by M. Monroi Maya Michael in Yaoundé. Financial expertise, legal rigor, and corporate solutions via 3mconsultingsarl.com.",
       },
       join: {
         title: "Join Us | Client Onboarding & Elite Consultant Network | 3M Consulting",
@@ -815,8 +815,8 @@ export const translations: Record<Language, TranslationData> = {
           iconName: "TrendingUp",
         },
         {
-          title: "Digital Facilitation & Responsiveness",
-          description: "Streamlined communication and rapid advisory support to initiate requests and track progress with ease.",
+          title: "Online Corporate Access via 3mconsultingsarl.com",
+          description: "Streamlined online platform and rapid advisory support to initiate requests and track progress with ease.",
           iconName: "CheckCircle2",
         },
       ],
@@ -830,7 +830,7 @@ export const translations: Record<Language, TranslationData> = {
       missionDetails: "With our multidisciplinary team (corporate attorneys, tax specialists, public procurement experts) and strategic location in Yaoundé Omnisport, we deliver immediate responsiveness across all government entities.",
       ceoTitle: "CEO & Founder",
       ceoName: "M. MONROI MAYA MICHAEL",
-      ceoBio: "A pragmatic financial strategist and passionate entrepreneur, M. Monroi Maya Michael combines solid accounting and tax credentials with advanced public finance training. Backed by over 5 years of leading major projects, he established 3M CONSULTING to deliver modern, accessible, and results-focused advisory services. Driven by a commitment to operational efficiency and personalized client partnership, he dedicates his expertise and network to each client's sustainable growth.",
+      ceoBio: "A pragmatic financial strategist and passionate entrepreneur, M. Monroi Maya Michael combines solid accounting and tax credentials with advanced public finance training. Backed by over 5 years of leading major projects, he established 3M CONSULTING to deliver modern, accessible, and results-focused advisory services. Driven by a commitment to operational efficiency and digital convenience, he also established 3mconsultingsarl.com, providing instant online access to corporate services in one click.",
       presenceTitle: "Strategic Headquarters in Yaoundé",
       presenceDesc: "Located at Omnisport Rue Foé, the firm is situated in immediate proximity to government ministries, commercial court registries, and regulatory bodies for ultra-fast processing of client files.",
     },
@@ -889,8 +889,8 @@ export const translations: Record<Language, TranslationData> = {
           "Synergy with an established multidisciplinary expert network",
         ],
       },
-      digitalPlatformNote: "Our dedicated team provides smooth onboarding and rapid initiation of your application in 4 straightforward steps.",
-      digitalPlatformBtn: "Start Your Application ↗",
+      digitalPlatformNote: "Our 3mconsultingsarl.com platform provides smooth onboarding and rapid initiation of your application in 4 straightforward steps.",
+      digitalPlatformBtn: "Access 3mconsultingsarl.com Portal ↗",
     },
     easiestWay: {
       badge: "Simple & Rapid Onboarding",
@@ -977,7 +977,7 @@ export const translations: Record<Language, TranslationData> = {
       privacyPolicy: "Privacy Policy",
       officialWebsite: "3mconsultingsarl.com",
       facebookPage: "Official Facebook Page",
-      digitalPlatform: "3M Consulting Portal",
+      digitalPlatform: "3mconsultingsarl.com Portal",
     },
   },
 };

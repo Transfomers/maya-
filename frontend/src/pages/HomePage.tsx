@@ -720,7 +720,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          SECTION 05 · EASIEST WAY TO START - 4 Steps
+          SECTION 05 · EASIEST WAY TO START - 4 Steps + 3mconsultingsarl.com
           ========================================================================= */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -769,7 +769,7 @@ export const HomePage: React.FC = () => {
               to="/contact"
               className="inline-flex items-center space-x-2 px-8 py-3.5 bg-jevelin-orange hover:bg-jevelin-orangeHover text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-md rounded"
             >
-              <span>{language === 'fr' ? 'Démarrer votre démarche' : 'Start Your Journey'}</span>
+              <span>{language === 'fr' ? 'Démarrer sur 3mconsultingsarl.com' : 'Get Started on 3mconsultingsarl.com'}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

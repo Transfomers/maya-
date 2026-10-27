@@ -122,12 +122,12 @@ export const AboutPage: React.FC = () => {
 
                 <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80">
                   <span className="text-xs font-bold text-jevelin-dark block">
-                    {language === 'fr' ? 'Accompagnement & Réactivité' : 'Advisory & Responsiveness'}
+                    {language === 'fr' ? 'Plateforme 3mconsultingsarl.com' : '3mconsultingsarl.com Platform'}
                   </span>
                   <p className="text-xs text-slate-500 mt-1">
                     {language === 'fr'
-                      ? 'Accès rapide à des experts pour le traitement et le suivi rigoureux de vos dossiers.'
-                      : 'Rapid access to senior consultants for file processing and diligent follow-up.'}
+                      ? 'Accès en ligne à nos experts pour initier et suivre vos démarches d’affaires en un clic.'
+                      : 'Online access to our senior experts to initiate and track your corporate files in one click.'}
                   </p>
                 </div>
               </div>
@@ -192,7 +192,7 @@ export const AboutPage: React.FC = () => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <span className="w-2 h-2 rounded-full bg-accent-400" />
-                    <span>Stratégie d'Entreprise & Conseil</span>
+                    <span>Initiateur de 3mconsultingsarl.com</span>
                   </div>
                 </div>
               </div>
@@ -433,7 +433,7 @@ export const AboutPage: React.FC = () => {
 
             <div className="pt-4 border-t border-slate-200 flex flex-wrap gap-4 items-center justify-between">
               <span className="text-xs text-slate-500">
-                Site officiel : <strong className="text-jevelin-dark">3mconsultingsarl.com</strong>
+                Site officiel & Portail : <strong className="text-jevelin-dark">3mconsultingsarl.com</strong>
               </span>
               <Link
                 to="/services"
