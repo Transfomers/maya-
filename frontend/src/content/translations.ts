@@ -178,9 +178,7 @@ export interface TranslationData {
       socialFacebookLabel: string;
       socialFacebookUrl: string;
       socialTwitterUrl: string;
-      socialLinkedInUrl: string;
       socialWhatsAppUrl: string;
-      socialTelegramUrl: string;
       socialTikTokUrl: string;
     };
   };
@@ -570,9 +568,7 @@ export const translations: Record<Language, TranslationData> = {
         socialFacebookLabel: "Facebook",
         socialFacebookUrl: "https://www.facebook.com/share/1FftJwk51R/?mibextid=wwXIfr",
         socialTwitterUrl: "https://twitter.com",
-        socialLinkedInUrl: "https://linkedin.com",
         socialWhatsAppUrl: "https://wa.me/237673841821",
-        socialTelegramUrl: "https://t.me/+237673841821",
         socialTikTokUrl: "https://vt.tiktok.com/ZSgXqLqXu/",
       },
     },
@@ -960,9 +956,7 @@ export const translations: Record<Language, TranslationData> = {
         socialFacebookLabel: "Facebook",
         socialFacebookUrl: "https://www.facebook.com/share/1FftJwk51R/?mibextid=wwXIfr",
         socialTwitterUrl: "https://twitter.com",
-        socialLinkedInUrl: "https://linkedin.com",
         socialWhatsAppUrl: "https://wa.me/237673841821",
-        socialTelegramUrl: "https://t.me/+237673841821",
         socialTikTokUrl: "https://vt.tiktok.com/ZSgXqLqXu/",
       },
     },

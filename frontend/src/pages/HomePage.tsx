@@ -956,22 +956,6 @@ export const HomePage: React.FC = () => {
                       >
                         WhatsApp
                       </a>
-                      <a
-                        href="https://t.me/+237673841821"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 bg-slate-100 hover:bg-sky-500 hover:text-white text-xs font-semibold text-slate-700 transition rounded"
-                      >
-                        Telegram
-                      </a>
-                      <a
-                        href="https://linkedin.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 bg-slate-100 hover:bg-blue-700 hover:text-white text-xs font-semibold text-slate-700 transition rounded"
-                      >
-                        LinkedIn
-                      </a>
                     </div>
                   </div>
                 </div>
