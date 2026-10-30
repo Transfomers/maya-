@@ -94,18 +94,6 @@ export interface TranslationData {
     presenceTitle: string;
     presenceDesc: string;
   };
-  canEvent: {
-    badge: string;
-    title: string;
-    desc: string;
-    packagesTitle: string;
-    learnMore: string;
-    packages: {
-      name: string;
-      subtitle: string;
-      features: string[];
-    }[];
-  };
   joinUs: {
     badge: string;
     heading: string;
@@ -449,35 +437,6 @@ export const translations: Record<Language, TranslationData> = {
       ceoBio: "Financier pragmatique et entrepreneur passionné, M. Monroi Maya Michael allie une solide formation en comptabilité et fiscalité à une spécialisation de haut niveau en finances publiques. Fort de plus de 5 ans de pilotage de projets d'envergure, il a fondé 3M CONSULTING pour apporter aux chefs d'entreprise un conseil moderne, accessible et résolument orienté résultats. Convaincu que la digitalisation est un levier majeur de performance, il est également l'initiateur du portail 3mconsultingsarl.com, permettant d'accéder aux services d'assistance et d'intermédiation en un clic.",
       presenceTitle: "Siège Stratégique à Yaoundé",
       presenceDesc: "Implanté à Omnisport Rue Foé, le cabinet bénéficie d'une proximité directe avec les ministères, les greffes des tribunaux et les directions générales pour un traitement ultra-rapide de vos dossiers.",
-    },
-    canEvent: {
-      badge: "Offre Événementielle & Accueil",
-      title: "Accompagnement Événements & Séjours - CAN TotalEnergies",
-      desc: "3M Consulting vous accompagne pour vos séjours professionnels et événementiels en Côte d'Ivoire et dans la sous-région. Pour cela, nous vous proposons différents packages d'hébergement et de services pour un séjour agréable et sécurisé.",
-      packagesTitle: "Nos 4 Formules Packages",
-      learnMore: "Demander des informations sur les packages ↗",
-      packages: [
-        {
-          name: "Package Jongleur",
-          subtitle: "Formule découverte économique & agile",
-          features: ["Hébergement sélectionné", "Assistance logistique de base", "Orientation locale quotidienne"],
-        },
-        {
-          name: "Package Supporter",
-          subtitle: "Formule confort & animation",
-          features: ["Hébergement tout confort", "Transferts aéroport & sites", "Assistance dédiée sur place"],
-        },
-        {
-          name: "Package Middle",
-          subtitle: "Formule business & sérénité",
-          features: ["Hôtel de standing supérieur", "Chauffeur privé & conciergerie", "Accès privilégié aux événements"],
-        },
-        {
-          name: "Package Premium",
-          subtitle: "Formule VIP tout inclus",
-          features: ["Hébergement haut de gamme 5*", "Accompagnement protocolaire complet", "Service personnalisé 24h/24"],
-        },
-      ],
     },
     joinUs: {
       badge: "Rejoignez l'Écosystème 3M",
@@ -845,35 +804,6 @@ export const translations: Record<Language, TranslationData> = {
       ceoBio: "A pragmatic financial strategist and passionate entrepreneur, M. Monroi Maya Michael combines solid accounting and tax credentials with advanced public finance training. Backed by over 5 years of leading major projects, he established 3M CONSULTING to deliver modern, accessible, and results-focused advisory services. Driven by a commitment to operational efficiency and digital convenience, he also established 3mconsultingsarl.com, providing instant online access to corporate services in one click.",
       presenceTitle: "Strategic Headquarters in Yaoundé",
       presenceDesc: "Located at Omnisport Rue Foé, the firm is situated in immediate proximity to government ministries, commercial court registries, and regulatory bodies for ultra-fast processing of client files.",
-    },
-    canEvent: {
-      badge: "Event Hospitality & Concierge",
-      title: "Event Hospitality & Travel Packages - CAN TotalEnergies",
-      desc: "3M Consulting supports your corporate and event stays in Ivory Coast and across the region during major sporting and business events. We offer dedicated hospitality and support packages for an enjoyable, seamless journey.",
-      packagesTitle: "Our 4 Curated Packages",
-      learnMore: "Request Information on Packages ↗",
-      packages: [
-        {
-          name: "Juggler Package",
-          subtitle: "Agile & smart discovery package",
-          features: ["Selected accommodation", "Essential ground logistics", "Daily orientation support"],
-        },
-        {
-          name: "Supporter Package",
-          subtitle: "Comfort & full event immersion",
-          features: ["Comfortable hotel stay", "Airport & venue transfers", "Dedicated on-site host"],
-        },
-        {
-          name: "Middle Package",
-          subtitle: "Premium business convenience",
-          features: ["High-end business hotel", "Private driver & concierge", "Priority access to venues"],
-        },
-        {
-          name: "Premium Package",
-          subtitle: "All-inclusive VIP experience",
-          features: ["5-Star luxury accommodation", "Complete protocol assistance", "Personalized 24/7 concierge"],
-        },
-      ],
     },
     joinUs: {
       badge: "Join the 3M Ecosystem",

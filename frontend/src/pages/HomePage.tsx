@@ -615,67 +615,6 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          SPECIAL EVENT / CAN TOTALENERGIES SECTION
-          ========================================================================= */}
-      <section className="py-20 bg-gradient-to-br from-jevelin-dark via-navy-900 to-navy-950 text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-accent-400/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
-          <div className="text-center max-w-3xl mx-auto space-y-4">
-            <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-slate-400 block">
-              {t.canEvent.badge}
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-black font-heading text-white">
-              {t.canEvent.title}
-            </h2>
-            <div className="flex justify-center">
-              <div className="w-12 h-[3px] bg-jevelin-orange rounded-full" />
-            </div>
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              {t.canEvent.desc}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.canEvent.packages.map((pkg, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-slate-400 transition-all flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="w-9 h-9 rounded-lg bg-white/10 text-white border border-white/20 flex items-center justify-center font-bold text-xs mb-4">
-                    {idx + 1}
-                  </div>
-                  <h3 className="text-lg font-bold font-heading text-white group-hover:text-jevelin-orange transition-colors">
-                    {pkg.name}
-                  </h3>
-                  <p className="text-xs text-slate-400 mt-1 mb-4">
-                    {pkg.subtitle}
-                  </p>
-                  <ul className="space-y-2 text-xs text-slate-300">
-                    {pkg.features.map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-center space-x-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-jevelin-orange flex-shrink-0" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="pt-6 mt-6 border-t border-white/10">
-                  <button
-                    onClick={() => openAssistanceWithService(pkg.name)}
-                    className="w-full py-2.5 px-4 bg-white/10 hover:bg-jevelin-orange hover:text-jevelin-darker text-white text-xs font-bold uppercase tracking-wider transition-colors rounded-lg flex items-center justify-center space-x-1"
-                  >
-                    <span>{language === 'fr' ? 'En savoir plus' : 'Learn more'}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
           SECTION 04 · WHY CHOOSE US
           ========================================================================= */}
       <section className="py-24 lg:py-28 bg-[#f6f7f9]">
