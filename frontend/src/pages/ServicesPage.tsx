@@ -21,6 +21,7 @@ import {
 import { useLanguage } from '../context/LanguageContext';
 import { SEOHead } from '../components/SEOHead';
 import { RequestAssistanceModal } from '../components/RequestAssistanceModal';
+import { CompanyCreationCatalogue } from '../components/CompanyCreationCatalogue';
 
 const SERVICE_ICONS: Record<string, React.ElementType> = {
   Building2,
@@ -47,6 +48,7 @@ export const ServicesPage: React.FC = () => {
   const { language, t } = useLanguage();
   const [modalOpen, setModalOpen] = useState(false);
   const [activeService, setActiveService] = useState<string>('');
+  const [showCreationCatalogue, setShowCreationCatalogue] = useState<boolean>(true);
   const location = useLocation();
 
   // Scroll to hash anchor on mount or location change
@@ -93,23 +95,27 @@ export const ServicesPage: React.FC = () => {
 
           {/* Commercial Trust Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs font-semibold text-slate-700">
+            <span className="px-3.5 py-1.5 rounded-full bg-accent-100/70 border border-accent-300 text-slate-900 font-bold flex items-center">
+              <Sparkles className="w-3.5 h-3.5 mr-1.5 text-jevelin-orange" />
+              {language === 'fr' ? 'Entretien Diagnostic & Cadrage Inclus' : 'Intake Diagnostic Interview Included'}
+            </span>
             <span className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200">
               ✓ {language === 'fr' ? 'Création d’entreprise en 72h' : '72h Fast Incorporation'}
             </span>
             <span className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200">
-              ✓ {language === 'fr' ? '100% Conforme OHADA & DGI' : '100% OHADA & Tax Compliant'}
+              ✓ {language === 'fr' ? 'Programme d’Accompagnement Clés en Main' : 'Turnkey Assistance Program'}
             </span>
             <span className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200">
-              ✓ {language === 'fr' ? 'Bureau Omnisport Rue Foé, Yaoundé' : 'Headquarters in Yaoundé'}
+              ✓ {language === 'fr' ? 'Présentiel Yaoundé ou Visioconférence' : 'In-Person Yaoundé or Video Call'}
             </span>
           </div>
 
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
             <button
-              onClick={() => openAssistance('')}
+              onClick={() => openAssistance(language === 'fr' ? 'Entretien Diagnostic & Accompagnement' : 'Diagnostic Interview & Assistance')}
               className="inline-flex items-center px-8 py-3.5 font-heading font-extrabold text-xs uppercase tracking-[0.15em] text-white bg-jevelin-dark hover:bg-slate-800 shadow-sm transition group"
             >
-              <span>{t.navbar.ctaAssistance}</span>
+              <span>{language === 'fr' ? 'Réserver un Entretien Diagnostic' : 'Book a Diagnostic Interview'}</span>
             </button>
             <a
               href="tel:+237673841821"
@@ -244,6 +250,51 @@ export const ServicesPage: React.FC = () => {
                       </div>
                     </div>
                   </div>
+
+                  {/* Detailed Catalogue Embed for Creation d'Entreprise */}
+                  {service.id === 'creation-entreprise' && (
+                    <div className="lg:col-span-12 pt-8 border-t border-slate-200 mt-4 space-y-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-slate-900 text-white p-6 rounded-2xl">
+                        <div className="space-y-1">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded bg-jevelin-orange text-slate-950">
+                              CATALOGUE OFFICIEL · OCT 30, 2026
+                            </span>
+                            <span className="text-xs text-accent-300 font-bold">@MAYA MICHAEL</span>
+                          </div>
+                          <h3 className="text-lg sm:text-xl font-bold font-heading">
+                            {language === 'fr'
+                              ? 'Catalogue des Prestations – Création d’Entreprise (6 Volets + Prestations Additionnelles)'
+                              : 'Service Catalogue – Business Incorporation (6 Pillars + Additional Services)'}
+                          </h3>
+                          <p className="text-xs text-slate-300">
+                            {language === 'fr'
+                              ? 'Consultez les détails exhaustifs : constitution, CNPS, compte bancaire, charte graphique, cachets officiels, valise d’entreprise et prestations additionnelles.'
+                              : 'View all comprehensive details: incorporation, CNPS, bank account, brand identity, stamps, corporate briefcase, and additional services.'}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setShowCreationCatalogue(!showCreationCatalogue)}
+                          className="inline-flex items-center px-5 py-3 rounded-lg font-heading font-extrabold text-xs uppercase tracking-wider text-slate-900 bg-jevelin-orange hover:bg-jevelin-orangeHover shadow-md transition flex-shrink-0"
+                        >
+                          <span>
+                            {showCreationCatalogue
+                              ? (language === 'fr' ? 'Masquer le Catalogue' : 'Hide Catalogue')
+                              : (language === 'fr' ? 'Afficher le Catalogue Complet' : 'Show Full Catalogue')}
+                          </span>
+                        </button>
+                      </div>
+
+                      {showCreationCatalogue && (
+                        <div className="pt-2">
+                          <CompanyCreationCatalogue
+                            onSelectService={(serviceName) => openAssistance(serviceName)}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             );

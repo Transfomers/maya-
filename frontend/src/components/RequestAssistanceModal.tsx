@@ -1,5 +1,20 @@
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2, AlertCircle, Loader2, Sparkles, Phone, Mail, Building2 } from 'lucide-react';
+import {
+  X,
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  Loader2,
+  Sparkles,
+  Phone,
+  Mail,
+  Building2,
+  Video,
+  Calendar,
+  MessageSquare,
+  ShieldCheck,
+  Check,
+} from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { submitContact } from '../services/api';
 
@@ -20,6 +35,8 @@ export const RequestAssistanceModal: React.FC<RequestAssistanceModalProps> = ({
   const [phone, setPhone] = useState('');
   const [service, setService] = useState(initialService);
   const [message, setMessage] = useState('');
+  const [interviewFormat, setInterviewFormat] = useState<'office' | 'visio' | 'call'>('office');
+  const [requestDiagnostic, setRequestDiagnostic] = useState<boolean>(true);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -38,12 +55,19 @@ export const RequestAssistanceModal: React.FC<RequestAssistanceModalProps> = ({
     setSubmitting(true);
     setErrorMessage(null);
 
+    const formatLabel =
+      interviewFormat === 'office'
+        ? (language === 'fr' ? 'Présentiel (Siège Omnisport Yaoundé)' : 'In-Person (Yaoundé Office)')
+        : interviewFormat === 'visio'
+        ? (language === 'fr' ? 'Visioconférence (Microsoft Teams / Google Meet)' : 'Video Call (Teams / Meet)')
+        : (language === 'fr' ? 'Téléphone & WhatsApp direct' : 'Phone & WhatsApp Call');
+
     try {
       await submitContact({
         name: fullName,
         email,
-        subject: `[Demande d'accompagnement 3M] ${service || 'Général'}`,
-        message: `Téléphone: ${phone || 'Non renseigné'}\nService: ${service}\n\nMessage:\n${message}`,
+        subject: `[Programme Accompagnement & Entretien 3M] ${service || 'Création d\'entreprise'} (${formatLabel})`,
+        message: `Format d'entretien souhaité : ${formatLabel}\nDiagnostic de cadrage demandé : ${requestDiagnostic ? 'Oui (Entretien 30-45 min)' : 'Non'}\nTéléphone : ${phone || 'Non renseigné'}\nService sollicité : ${service}\n\nDescription du projet / Besoins :\n${message}`,
       });
       setSuccess(true);
     } catch (err: any) {
@@ -61,6 +85,8 @@ export const RequestAssistanceModal: React.FC<RequestAssistanceModalProps> = ({
     setEmail('');
     setPhone('');
     setMessage('');
+    setInterviewFormat('office');
+    setRequestDiagnostic(true);
     onClose();
   };
 
@@ -83,17 +109,35 @@ export const RequestAssistanceModal: React.FC<RequestAssistanceModalProps> = ({
             >
               <X className="w-5 h-5" />
             </button>
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300 mb-1">
-              3M Consulting SARL · Yaoundé
-            </p>
+            <div className="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-[0.2em] text-accent-300 mb-1">
+              <Sparkles className="w-3.5 h-3.5 text-jevelin-orange" />
+              <span>Programme d'Assistance & Entretien Diagnostic</span>
+            </div>
             <h3 className="text-xl sm:text-2xl font-bold font-heading text-white" id="modal-title">
-              {language === 'fr' ? 'Demander un accompagnement' : 'Request Assistance'}
+              {language === 'fr'
+                ? 'Demander un Accompagnement & Entretien Stratégique'
+                : 'Request Assistance & Strategic Diagnostic Interview'}
             </h3>
             <p className="mt-1 text-xs sm:text-sm text-slate-300">
               {language === 'fr'
-                ? 'Présentez votre besoin. Notre équipe vous répond sous 24 à 48 heures.'
-                : 'Tell us about your project. Our team will get back to you within 24 to 48 hours.'}
+                ? 'Bénéficiez d’un entretien préalable (30-45 min) avec nos juristes pour analyser votre forme juridique et vos obligations avant engagement.'
+                : 'Get a 30-45 min intake diagnostic interview with our corporate attorneys to optimize your legal form and tax schedule before filing.'}
             </p>
+          </div>
+
+          {/* Program Accent Banner */}
+          <div className="bg-accent-50 border-b border-accent-200/80 px-6 py-2.5 flex items-center justify-between text-xs text-slate-800">
+            <div className="flex items-center space-x-2">
+              <ShieldCheck className="w-4 h-4 text-jevelin-orange flex-shrink-0" />
+              <span className="font-semibold">
+                {language === 'fr'
+                  ? 'Protocole d’assistance personnalisé : Cadrage 72h · Conforme OHADA & DGI'
+                  : 'Tailored Assistance Protocol: 72h Turnkey · OHADA & Tax Compliant'}
+              </span>
+            </div>
+            <span className="hidden sm:inline font-bold text-jevelin-dark text-[11px] bg-white px-2 py-0.5 rounded border border-accent-200">
+              {language === 'fr' ? 'Sans engagement' : 'Zero Commitment'}
+            </span>
           </div>
 
           {/* Body */}
@@ -186,6 +230,101 @@ export const RequestAssistanceModal: React.FC<RequestAssistanceModalProps> = ({
                     />
                   </div>
                 </div>
+
+                {/* Interview Format Selector */}
+                <div className="space-y-2 pt-1">
+                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider">
+                    {language === 'fr'
+                      ? 'Format d’entretien diagnostic souhaité :'
+                      : 'Preferred diagnostic interview format:'}
+                  </label>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                    <button
+                      type="button"
+                      onClick={() => setInterviewFormat('office')}
+                      className={`p-3 rounded-xl border text-left transition flex flex-col justify-between ${
+                        interviewFormat === 'office'
+                          ? 'border-jevelin-orange bg-amber-50/60 ring-2 ring-jevelin-orange/20'
+                          : 'border-slate-200 hover:border-slate-300 bg-white'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1.5">
+                        <Building2 className={`w-4 h-4 ${interviewFormat === 'office' ? 'text-jevelin-orange' : 'text-slate-500'}`} />
+                        {interviewFormat === 'office' && <Check className="w-3.5 h-3.5 text-jevelin-orange" />}
+                      </div>
+                      <span className="text-xs font-bold text-slate-900 block">
+                        {language === 'fr' ? 'Présentiel' : 'In-Person'}
+                      </span>
+                      <span className="text-[10px] text-slate-500">
+                        {language === 'fr' ? 'Siège Yaoundé (Omnisport)' : 'Yaoundé Office'}
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setInterviewFormat('visio')}
+                      className={`p-3 rounded-xl border text-left transition flex flex-col justify-between ${
+                        interviewFormat === 'visio'
+                          ? 'border-jevelin-orange bg-amber-50/60 ring-2 ring-jevelin-orange/20'
+                          : 'border-slate-200 hover:border-slate-300 bg-white'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1.5">
+                        <Video className={`w-4 h-4 ${interviewFormat === 'visio' ? 'text-jevelin-orange' : 'text-slate-500'}`} />
+                        {interviewFormat === 'visio' && <Check className="w-3.5 h-3.5 text-jevelin-orange" />}
+                      </div>
+                      <span className="text-xs font-bold text-slate-900 block">
+                        {language === 'fr' ? 'Visioconférence' : 'Video Call'}
+                      </span>
+                      <span className="text-[10px] text-slate-500">
+                        {language === 'fr' ? 'Teams / Meet / Diaspora' : 'Teams / Meet / Diaspora'}
+                      </span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setInterviewFormat('call')}
+                      className={`p-3 rounded-xl border text-left transition flex flex-col justify-between ${
+                        interviewFormat === 'call'
+                          ? 'border-jevelin-orange bg-amber-50/60 ring-2 ring-jevelin-orange/20'
+                          : 'border-slate-200 hover:border-slate-300 bg-white'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1.5">
+                        <Phone className={`w-4 h-4 ${interviewFormat === 'call' ? 'text-jevelin-orange' : 'text-slate-500'}`} />
+                        {interviewFormat === 'call' && <Check className="w-3.5 h-3.5 text-jevelin-orange" />}
+                      </div>
+                      <span className="text-xs font-bold text-slate-900 block">
+                        {language === 'fr' ? 'Appel / WhatsApp' : 'Phone / WhatsApp'}
+                      </span>
+                      <span className="text-[10px] text-slate-500">
+                        {language === 'fr' ? 'Échange direct immédiat' : 'Immediate callback'}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Diagnostic Checkbox */}
+                <label className="flex items-start space-x-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    checked={requestDiagnostic}
+                    onChange={(e) => setRequestDiagnostic(e.target.checked)}
+                    className="mt-0.5 rounded text-jevelin-orange focus:ring-jevelin-orange"
+                  />
+                  <div className="text-xs text-slate-700">
+                    <strong className="text-slate-900 block font-semibold">
+                      {language === 'fr'
+                        ? 'Inclure l’entretien diagnostic préalable de 30-45 min (Recommandé)'
+                        : 'Include the 30-45 min intake diagnostic interview (Recommended)'}
+                    </strong>
+                    <span className="text-slate-500 text-[11px]">
+                      {language === 'fr'
+                        ? 'Échange stratégique avec un juriste pour valider votre forme sociétaire (SARL, SAS, SA) et votre régime fiscal.'
+                        : 'Strategic session with a corporate attorney to validate entity selection and tax optimization.'}
+                    </span>
+                  </div>
+                </label>
 
                 {/* Service of interest */}
                 <div>

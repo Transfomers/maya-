@@ -102,12 +102,13 @@ export const SERVICES_SEO_DATA: ServiceDetailItem[] = [
         }
       ],
       deliverables: [
-        "Rédaction sur mesure des statuts sociaux conformes à l'Acte Uniforme OHADA",
-        "Enregistrement auprès des services fiscaux et paiement des droits légaux",
-        "Dépôt et immatriculation au Registre du Commerce et du Crédit Mobilier (RCCM)",
-        "Obtention du Numéro d'Identifiant Unique (NIU) et de la Carte de Contribuable",
-        "Publication de l'avis de constitution au Journal d'Annonces Légales (JAL)",
-        "Constitution du registre des associés et attestation de domiciliation commerciale"
+        "1. Création d'entreprise : Choix forme juridique (Ets, SARL, SAS, SA, GIE), nom commercial, statuts OHADA, PV nomination, DSV, liaison notaire, dépôt CFCE, RCCM, NIU & JAL",
+        "2. Immatriculation CNPS : Constitution et dépôt dossier employeur, numéro employeur, déclaration premiers employés, calendrier des cotisations",
+        "3. Ouverture compte bancaire : Orientation bancaire, dossier d'ouverture complet, dépôt du capital & attestation, suivi activation",
+        "4. Charte graphique & Papier en-tête : Logo vectoriel HD, couleurs & typographies, papier en-tête (RCCM, NIU), cartes de visite, factures/devis/BC, signature mail",
+        "5. Cachets d'entreprise : Cachet rond officiel société, cachet rectangulaire (RCCM, NIU, adresse), dateur, « Payé », « Reçu », « Copie conforme », tampon signature",
+        "6. Valise d'entreprise : Remise en main propre des statuts enregistrés, PV nomination, extrait RCCM, carte NIU, CNPS, compte bancaire, boîte de cachets, supports print & clé USB, guide fiscal et social",
+        "+ Prestations additionnelles : Conseil & préparation (business plan, fiscalité, OAPI, licences), Démarrage (domiciliation, comptabilité SYSCOHADA, contrats), Implantation filiales & succursales, Vie sociale & Restructuration"
       ],
       documentsRequired: [
         "Copie certifiée conforme de la CNI ou du Passeport des gérants/associés",
@@ -185,12 +186,13 @@ export const SERVICES_SEO_DATA: ServiceDetailItem[] = [
         }
       ],
       deliverables: [
-        "Custom drafting of OHADA-compliant Articles of Association (Bylaws)",
-        "Tax authority registration and payment of statutory stamp duties",
-        "Commercial court registry filing (RCCM Registration Certificate)",
-        "Issuance of Unique Tax Identification Number (NIU) and Taxpayer Card",
-        "Official legal gazette publication of company formation notice",
-        "Commercial domiciliation agreement and shareholder register"
+        "1. Company Incorporation: Legal entity advisory (Sole Prop, SARL, SAS, SA, GIE), name availability, OHADA bylaws, appointment minutes, DSV, notary liaison, CFCE, RCCM, NIU & legal gazette",
+        "2. CNPS Social Security: Employer registration, employer ID number, initial employee declarations, statutory contribution calendar",
+        "3. Corporate Bank Account: Banking institution selection, KYC file, capital deposit assistance & certificate, activation follow-up",
+        "4. Brand Identity & Letterhead: Vector logo, color scheme, compliant letterhead (RCCM, NIU, address), business cards, invoice/quote templates, email signature",
+        "5. Official Stamps: Round official company seal, rectangular legal stamp (RCCM, NIU, address), dater stamp, 'Paid', 'Received', 'Certified Copy' stamps",
+        "6. Corporate Briefcase (Valise d'Entreprise): Executive briefcase containing certified bylaws, minutes, RCCM extract, NIU card, CNPS, bank confirmation, stamp box, stationery & USB source drive, tax & compliance guide",
+        "+ Additional Services: Scoping & feasibility (business plan, tax regime, OAPI trademarks, permits), Launch (domiciliation, SYSCOHADA accounting, contracts), Foreign branch/subsidiary, Corporate secretarial & Restructuring"
       ],
       documentsRequired: [
         "Certified copy of National ID or Passport of all directors and shareholders",

@@ -21,10 +21,12 @@ import {
   Check,
   Shield,
   Award,
+  Sparkles,
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { SEOHead } from '../components/SEOHead';
 import { RequestAssistanceModal } from '../components/RequestAssistanceModal';
+import { CompanyCreationCatalogue } from '../components/CompanyCreationCatalogue';
 import { SERVICES_SEO_DATA, getServiceBySlug, ServiceDetailItem } from '../content/servicesSeoData';
 
 const SERVICE_ICONS: Record<string, React.ElementType> = {
@@ -48,6 +50,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ forcedSlug
   const navigate = useNavigate();
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [assistanceService, setAssistanceService] = useState<string>('');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const service = getServiceBySlug(activeSlug);
@@ -186,13 +189,17 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ forcedSlug
 
               {/* Trust Pills */}
               <div className="flex flex-wrap items-center gap-3 pt-2 text-xs font-bold text-slate-200">
+                <div className="flex items-center px-3 py-1.5 rounded-md bg-accent-500/20 border border-accent-400/40 text-accent-300">
+                  <Sparkles className="w-3.5 h-3.5 mr-2 text-jevelin-orange" />
+                  <span>{language === 'fr' ? 'Entretien Diagnostic & Cadrage Inclus' : 'Intake Diagnostic Interview Included'}</span>
+                </div>
                 <div className="flex items-center px-3 py-1.5 rounded-md bg-white/5 border border-white/10">
                   <Shield className="w-3.5 h-3.5 mr-2 text-accent-400" />
                   <span>{language === 'fr' ? 'Conforme OHADA & DGI' : 'OHADA & Tax Compliant'}</span>
                 </div>
                 <div className="flex items-center px-3 py-1.5 rounded-md bg-white/5 border border-white/10">
                   <Clock className="w-3.5 h-3.5 mr-2 text-accent-400" />
-                  <span>{language === 'fr' ? 'Traitement Rapide' : 'Rapid Processing'}</span>
+                  <span>{language === 'fr' ? 'Traitement Rapide 72h' : 'Rapid Processing 72h'}</span>
                 </div>
                 <div className="flex items-center px-3 py-1.5 rounded-md bg-white/5 border border-white/10">
                   <MapPin className="w-3.5 h-3.5 mr-2 text-accent-400" />
@@ -204,12 +211,29 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ forcedSlug
               <div className="pt-4 flex flex-wrap items-center gap-4">
                 <button
                   type="button"
-                  onClick={() => setModalOpen(true)}
+                  onClick={() => {
+                    setAssistanceService(
+                      language === 'fr'
+                        ? `Entretien Diagnostic & Accompagnement : ${content.h1}`
+                        : `Diagnostic Interview & Assistance: ${content.h1}`
+                    );
+                    setModalOpen(true);
+                  }}
                   className="inline-flex items-center px-7 py-3.5 rounded-lg font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-jevelin-orange hover:bg-jevelin-orangeHover shadow-lg hover:shadow-xl transition transform active:scale-95"
                 >
                   <MessageSquare className="w-4 h-4 mr-2" />
-                  <span>{content.ctaPrimary}</span>
+                  <span>{language === 'fr' ? 'Réserver un Entretien Diagnostic' : 'Book a Diagnostic Interview'}</span>
                 </button>
+
+                {service.id === 'creation-entreprise' && (
+                  <a
+                    href="#catalogue-officiel"
+                    className="inline-flex items-center px-6 py-3.5 rounded-lg font-heading font-bold text-xs uppercase tracking-wider text-accent-300 bg-white/10 hover:bg-white/20 border border-white/20 transition group"
+                  >
+                    <FileText className="w-4 h-4 mr-2 text-jevelin-orange group-hover:scale-110 transition-transform" />
+                    <span>{language === 'fr' ? 'Catalogue Officiel · @MAYA MICHAEL' : 'Official Catalogue · @MAYA MICHAEL'}</span>
+                  </a>
+                )}
 
                 <a
                   href="https://wa.me/237673841821?text=Bonjour%203M%20Consulting,%20je%20souhaite%20un%20devis%20pour%20votre%20service."
@@ -479,6 +503,39 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ forcedSlug
         </div>
       </section>
 
+      {/* Official Prestations Catalogue for Business Formation (@MAYA MICHAEL) */}
+      {service.id === 'creation-entreprise' && (
+        <section id="catalogue-officiel" className="scroll-mt-20 py-16 lg:py-20 bg-slate-950 border-b border-slate-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div className="text-center max-w-3xl mx-auto space-y-3">
+              <span className="text-xs font-extrabold tracking-[0.25em] uppercase text-jevelin-orange block font-heading">
+                {language === 'fr' ? 'RÉFÉRENTIEL EXHAUSTIF DES PRESTATIONS' : 'COMPREHENSIVE SERVICE DIRECTORY'}
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-extrabold font-heading text-white tracking-tight">
+                {language === 'fr'
+                  ? 'Catalogue des Prestations – Création d’Entreprise'
+                  : 'Service Catalogue – Business Incorporation & Setup'}
+              </h2>
+              <div className="flex justify-center">
+                <div className="w-12 h-[3px] bg-jevelin-orange rounded-full" />
+              </div>
+              <p className="text-xs sm:text-sm text-slate-300">
+                {language === 'fr'
+                  ? 'L’ensemble des 6 prestations clés clés en main et des prestations additionnelles de conseil, démarrage, implantation, vie sociale et restructuration.'
+                  : 'All 6 turnkey core services plus strategic additional services for startup, expansion, governance, and restructuring.'}
+              </p>
+            </div>
+
+            <CompanyCreationCatalogue
+              onSelectService={(serviceTitle) => {
+                setAssistanceService(serviceTitle);
+                setModalOpen(true);
+              }}
+            />
+          </div>
+        </section>
+      )}
+
       {/* Practical FAQ Accordion (Matches Google Rich Snippets) */}
       <section className="py-16 bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -632,7 +689,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ forcedSlug
       <RequestAssistanceModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        initialService={content.h1}
+        initialService={assistanceService || content.h1}
       />
     </div>
   );
