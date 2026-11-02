@@ -11,7 +11,6 @@ import {
   Copy,
   Check,
   ExternalLink,
-  Sparkles,
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { SEOHead } from '../components/SEOHead';

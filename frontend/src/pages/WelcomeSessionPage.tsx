@@ -11,7 +11,6 @@ import {
   HelpCircle,
   Laptop,
   Users2,
-  Sparkles,
   ArrowRight,
 } from 'lucide-react';
 import { getUpcomingSession } from '../services/api';
@@ -221,7 +220,7 @@ export const WelcomeSessionPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
             <h3 className="text-lg font-bold text-slate-900 flex items-center">
-              <Sparkles className="w-5 h-5 mr-2 text-brand-600" />
+              <Users2 className="w-5 h-5 mr-2 text-brand-600" />
               Ce qui se passe pendant la session
             </h3>
             <ul className="space-y-3 text-sm text-slate-600">

@@ -9,7 +9,6 @@ import {
   Building2,
   MapPin,
   Clock,
-  Sparkles,
   ArrowRight,
   Headphones,
   TrendingUp,

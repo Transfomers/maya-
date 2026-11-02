@@ -5,7 +5,6 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
-  Sparkles,
   Phone,
   Mail,
   Building2,
@@ -110,7 +109,6 @@ export const RequestAssistanceModal: React.FC<RequestAssistanceModalProps> = ({
               <X className="w-5 h-5" />
             </button>
             <div className="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-[0.2em] text-accent-300 mb-1">
-              <Sparkles className="w-3.5 h-3.5 text-jevelin-orange" />
               <span>Programme d'Assistance & Entretien Diagnostic</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold font-heading text-white" id="modal-title">

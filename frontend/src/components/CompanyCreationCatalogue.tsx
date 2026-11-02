@@ -13,7 +13,6 @@ import {
   Users,
   Layers,
   CheckCircle2,
-  Sparkles,
   ArrowRight,
   PhoneCall,
   Search,
@@ -254,7 +253,6 @@ export const CompanyCreationCatalogue: React.FC<CompanyCreationCatalogueProps> =
                 : 'bg-white/5 text-slate-300 hover:bg-white/10'
             }`}
           >
-            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-accent-300" />
             <span>{language === 'fr' ? 'Programme & Entretien' : 'Assistance & Intake'}</span>
           </button>
 
@@ -532,7 +530,7 @@ export const CompanyCreationCatalogue: React.FC<CompanyCreationCatalogueProps> =
                       <div className="px-5 sm:px-6 pb-6 pt-1 border-t border-white/5 space-y-4">
                         {isValise && (
                           <div className="p-4 rounded-xl bg-jevelin-orange/10 border border-jevelin-orange/30 text-xs text-slate-200 flex items-start space-x-3 mb-4">
-                            <Sparkles className="w-5 h-5 text-jevelin-orange flex-shrink-0 mt-0.5" />
+                            <Briefcase className="w-5 h-5 text-jevelin-orange flex-shrink-0 mt-0.5" />
                             <div>
                               <strong className="text-white block font-heading text-sm">
                                 {data.valiseHighlightTitle}

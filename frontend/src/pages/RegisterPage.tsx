@@ -18,7 +18,6 @@ import {
   Loader2,
   Shield,
   FileText,
-  Sparkles,
 } from 'lucide-react';
 
 const SUGGESTED_ROLES = [
@@ -124,7 +123,6 @@ export const RegisterPage: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-brand-100 text-brand-800 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
             <span>Rejoindre la Communauté</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">

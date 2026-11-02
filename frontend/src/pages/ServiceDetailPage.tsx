@@ -21,7 +21,6 @@ import {
   Check,
   Shield,
   Award,
-  Sparkles,
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { SEOHead } from '../components/SEOHead';
@@ -190,7 +189,6 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ forcedSlug
               {/* Trust Pills */}
               <div className="flex flex-wrap items-center gap-3 pt-2 text-xs font-bold text-slate-200">
                 <div className="flex items-center px-3 py-1.5 rounded-md bg-accent-500/20 border border-accent-400/40 text-accent-300">
-                  <Sparkles className="w-3.5 h-3.5 mr-2 text-jevelin-orange" />
                   <span>{language === 'fr' ? 'Entretien Diagnostic & Cadrage Inclus' : 'Intake Diagnostic Interview Included'}</span>
                 </div>
                 <div className="flex items-center px-3 py-1.5 rounded-md bg-white/5 border border-white/10">

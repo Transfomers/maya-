@@ -11,7 +11,6 @@ import {
   Briefcase,
   CheckCircle2,
   ArrowUpRight,
-  Sparkles,
   FileText,
   Clock,
   PhoneCall,
@@ -96,7 +95,6 @@ export const ServicesPage: React.FC = () => {
           {/* Commercial Trust Pills */}
           <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs font-semibold text-slate-700">
             <span className="px-3.5 py-1.5 rounded-full bg-accent-100/70 border border-accent-300 text-slate-900 font-bold flex items-center">
-              <Sparkles className="w-3.5 h-3.5 mr-1.5 text-jevelin-orange" />
               {language === 'fr' ? 'Entretien Diagnostic & Cadrage Inclus' : 'Intake Diagnostic Interview Included'}
             </span>
             <span className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200">

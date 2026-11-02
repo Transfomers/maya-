@@ -16,7 +16,6 @@ import {
   Mail,
   MapPin,
   Clock,
-  Sparkles,
   Send,
   Loader2,
   Copy,
@@ -25,7 +24,6 @@ import {
   Compass,
   Quote,
   ChevronRight,
-  Star,
   ExternalLink,
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
