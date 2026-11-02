@@ -319,9 +319,15 @@ export const Footer: React.FC = () => {
               <span className="hidden sm:inline text-slate-700">|</span>
               <span className="text-slate-400">
                 {language === 'fr' ? 'Réalisé par' : 'Done by'}{' '}
-                <span className="font-semibold text-slate-300 hover:text-jevelin-orange transition-colors">
+                <a
+                  href="https://craftistudio.tech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-slate-300 hover:text-jevelin-orange transition-colors underline decoration-slate-700 underline-offset-2 hover:decoration-jevelin-orange"
+                  title="Crafti Studio"
+                >
                   Crafti Studio
-                </span>
+                </a>
               </span>
             </div>
             <div className="flex items-center space-x-6">
