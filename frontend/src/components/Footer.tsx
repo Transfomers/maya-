@@ -312,9 +312,18 @@ export const Footer: React.FC = () => {
         {/* Bottom copyright line */}
         <div className="border-t border-slate-800 py-6 px-4 sm:px-6 lg:px-8 text-xs text-slate-500">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>
-              © {new Date().getFullYear()} 3M Consulting SARL · {t.footer.rightsReserved} · Yaoundé, Cameroun.
-            </p>
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-2 gap-y-1 text-center sm:text-left">
+              <span>
+                © {new Date().getFullYear()} 3M Consulting SARL · {t.footer.rightsReserved} · Yaoundé, Cameroun.
+              </span>
+              <span className="hidden sm:inline text-slate-700">|</span>
+              <span className="text-slate-400">
+                {language === 'fr' ? 'Réalisé par' : 'Done by'}{' '}
+                <span className="font-semibold text-slate-300 hover:text-jevelin-orange transition-colors">
+                  Crafti Studio
+                </span>
+              </span>
+            </div>
             <div className="flex items-center space-x-6">
               <Link to="/privacy" className="hover:text-slate-300 transition-colors">
                 {t.footer.privacyPolicy}
