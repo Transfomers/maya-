@@ -226,16 +226,16 @@ export const CompanyCreationCatalogue: React.FC<CompanyCreationCatalogueProps> =
       </div>
 
       {/* Control Bar: Tabs + Search */}
-      <div className="bg-slate-950/70 border-b border-white/10 px-6 sm:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div className="bg-slate-950/70 border-b border-white/10 px-4 sm:px-6 md:px-10 py-3 sm:py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3 sm:gap-4">
         {/* Navigation Tabs */}
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none sm:flex-wrap">
           <button
             type="button"
             onClick={() => {
               setActiveTab('all');
               setActiveAdditionalCategory('all');
             }}
-            className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition ${
+            className={`whitespace-nowrap flex-shrink-0 px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition ${
               activeTab === 'all'
                 ? 'bg-jevelin-orange text-white shadow'
                 : 'bg-white/5 text-slate-300 hover:bg-white/10'
@@ -247,7 +247,7 @@ export const CompanyCreationCatalogue: React.FC<CompanyCreationCatalogueProps> =
           <button
             type="button"
             onClick={() => setActiveTab('program')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition flex items-center ${
+            className={`whitespace-nowrap flex-shrink-0 px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition flex items-center ${
               activeTab === 'program'
                 ? 'bg-jevelin-orange text-white shadow'
                 : 'bg-white/5 text-slate-300 hover:bg-white/10'
@@ -259,7 +259,7 @@ export const CompanyCreationCatalogue: React.FC<CompanyCreationCatalogueProps> =
           <button
             type="button"
             onClick={() => setActiveTab('main')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition ${
+            className={`whitespace-nowrap flex-shrink-0 px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition ${
               activeTab === 'main'
                 ? 'bg-jevelin-orange text-white shadow'
                 : 'bg-white/5 text-slate-300 hover:bg-white/10'
@@ -271,7 +271,7 @@ export const CompanyCreationCatalogue: React.FC<CompanyCreationCatalogueProps> =
           <button
             type="button"
             onClick={() => setActiveTab('additional')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition ${
+            className={`whitespace-nowrap flex-shrink-0 px-3.5 sm:px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition ${
               activeTab === 'additional'
                 ? 'bg-jevelin-orange text-white shadow'
                 : 'bg-white/5 text-slate-300 hover:bg-white/10'
