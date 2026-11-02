@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { SERVICE_ID_TO_CANONICAL } from '../content/servicesSeoData';
 import {
@@ -14,8 +14,13 @@ import {
   FileText,
   Clock,
   PhoneCall,
-  HelpCircle,
+  Search,
+  ChevronDown,
+  ChevronUp,
   MapPin,
+  Shield,
+  ArrowRight,
+  Filter,
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { SEOHead } from '../components/SEOHead';
@@ -43,11 +48,56 @@ const SERVICE_IMAGES: Record<string, string> = {
   'marches-publics': '/asset/team-full-office.webp',
 };
 
+// Category mapping for quick filtering
+const SERVICE_CATEGORIES: Record<string, 'legal' | 'tax' | 'procurement'> = {
+  'creation-entreprise': 'legal',
+  'recherche-locaux': 'legal',
+  'agrements-licences': 'legal',
+  'fiscalite-cnps': 'tax',
+  'montage-dsf': 'tax',
+  'montage-dao': 'procurement',
+  'marches-publics': 'procurement',
+};
+
+// Execution highlights for each service
+const SERVICE_METRICS: Record<string, { fr: { delay: string; format: string }; en: { delay: string; format: string } }> = {
+  'creation-entreprise': {
+    fr: { delay: '72h chrono (RCCM & NIU)', format: 'Dossier clé en main + Valise' },
+    en: { delay: '72h fast-track incorporation', format: 'Turnkey bundle + Briefcase' },
+  },
+  'recherche-locaux': {
+    fr: { delay: '3 à 7 jours ouvrés', format: 'Bail commercial sécurisé' },
+    en: { delay: '3 to 7 business days', format: 'Secured commercial lease' },
+  },
+  'agrements-licences': {
+    fr: { delay: 'Délais ministériels optimisés', format: 'Liaison directe administrations' },
+    en: { delay: 'Streamlined ministry processing', format: 'Direct institutional liaison' },
+  },
+  'fiscalite-cnps': {
+    fr: { delay: 'Avant le 15 de chaque mois', format: 'Déclarations fiscales & sociales' },
+    en: { delay: 'Monthly by the 15th', format: 'Tax & social filing compliance' },
+  },
+  'montage-dsf': {
+    fr: { delay: 'Conforme calendrier DGI', format: 'États financiers SYSCOHADA' },
+    en: { delay: 'Compliant with DGI calendar', format: 'SYSCOHADA balance sheets' },
+  },
+  'montage-dao': {
+    fr: { delay: 'Selon date limite de dépôt', format: 'Dossier technique & financier' },
+    en: { delay: 'Strict tender deadline delivery', format: 'Technical & financial bids' },
+  },
+  'marches-publics': {
+    fr: { delay: 'Tout au long du contrat', format: 'Décomptes, cautions & PV' },
+    en: { delay: 'Full project lifecycle', format: 'Invoicing, guarantees & sign-off' },
+  },
+};
+
 export const ServicesPage: React.FC = () => {
   const { language, t } = useLanguage();
   const [modalOpen, setModalOpen] = useState(false);
   const [activeService, setActiveService] = useState<string>('');
   const [showCreationCatalogue, setShowCreationCatalogue] = useState<boolean>(true);
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'legal' | 'tax' | 'procurement'>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const location = useLocation();
 
   // Scroll to hash anchor on mount or location change
@@ -67,56 +117,124 @@ export const ServicesPage: React.FC = () => {
     setModalOpen(true);
   };
 
+  // Filtered services based on category and search query
+  const filteredServices = useMemo(() => {
+    return t.whatWeOffer.services.filter((service) => {
+      // Category filter
+      const serviceCat = SERVICE_CATEGORIES[service.id] || 'legal';
+      if (selectedCategory !== 'all' && serviceCat !== selectedCategory) {
+        return false;
+      }
+
+      // Search filter
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase().trim();
+        const matchesTitle = service.title.toLowerCase().includes(query);
+        const matchesSummary = service.summary.toLowerCase().includes(query);
+        const matchesDescription = service.description.toLowerCase().includes(query);
+        const matchesDeliverables = service.deliverables.some((d) => d.toLowerCase().includes(query));
+        const matchesDocuments = service.documentsRequired.some((doc) => doc.toLowerCase().includes(query));
+
+        return matchesTitle || matchesSummary || matchesDescription || matchesDeliverables || matchesDocuments;
+      }
+
+      return true;
+    });
+  }, [t.whatWeOffer.services, selectedCategory, searchQuery]);
+
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full bg-white">
       <SEOHead page="services" />
 
-      {/* Header Banner */}
-      <section className="bg-slate-50 py-16 lg:py-20 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
-          <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-slate-500 font-heading block">
-            {t.navbar.services}
-          </span>
+      {/* =========================================================================
+          HERO BANNER · Pure White Background with Clean Corporate Framing
+          ========================================================================= */}
+      <section className="bg-white pt-14 pb-12 lg:pt-20 lg:pb-16 border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-slate-100 text-slate-700 text-[11px] font-bold uppercase tracking-[0.2em]">
+            <Building2 className="w-3.5 h-3.5 text-jevelin-orange" />
+            <span>3M CONSULTING · YAOUNDÉ, CAMEROUN</span>
+          </div>
 
-          <h1 className="text-3xl sm:text-5xl font-black font-heading text-slate-900 tracking-tight max-w-4xl mx-auto uppercase">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black font-heading text-slate-900 tracking-tight max-w-4xl mx-auto leading-tight">
             {language === 'fr'
               ? 'Domaines d’Expertise & Solutions d’Affaires'
-              : 'Practice Areas & Corporate Solutions'}
+              : 'Practice Areas & Business Solutions'}
           </h1>
 
           <div className="flex justify-center">
-            <div className="w-12 h-[3px] bg-jevelin-orange rounded-full" />
+            <div className="w-16 h-1 bg-jevelin-orange rounded-full" />
           </div>
 
-          <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            {t.whatWeOffer.intro}
+          <p className="text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            {language === 'fr'
+              ? 'Fini les blocages administratifs et l’incertitude réglementaire. Nous prenons en charge l’ensemble de vos démarches juridiques, fiscales et opérationnelles avec une équipe de juristes et consultants dédiés.'
+              : 'No more administrative delays or regulatory bottlenecks. We take full charge of your legal, tax, and operational procedures with dedicated attorneys and corporate advisors.'}
           </p>
 
-          {/* Commercial Trust Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs font-semibold text-slate-700">
-            <span className="px-3.5 py-1.5 rounded-full bg-accent-100/70 border border-accent-300 text-slate-900 font-bold flex items-center">
-              {language === 'fr' ? 'Entretien Diagnostic & Cadrage Inclus' : 'Intake Diagnostic Interview Included'}
-            </span>
-            <span className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200">
-              ✓ {language === 'fr' ? 'Création d’entreprise en 72h' : '72h Fast Incorporation'}
-            </span>
-            <span className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200">
-              ✓ {language === 'fr' ? 'Programme d’Accompagnement Clés en Main' : 'Turnkey Assistance Program'}
-            </span>
-            <span className="px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200">
-              ✓ {language === 'fr' ? 'Présentiel Yaoundé ou Visioconférence' : 'In-Person Yaoundé or Video Call'}
-            </span>
+          {/* 4 Pillars of Excellence on White Background */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto pt-4 text-left">
+            <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-slate-300 transition">
+              <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-2 font-bold">
+                <CheckCircle2 className="w-4 h-4" />
+              </div>
+              <span className="font-bold text-xs text-slate-900 block font-heading">
+                {language === 'fr' ? 'Conformité OHADA & DGI' : 'OHADA & Tax Compliant'}
+              </span>
+              <span className="text-[11px] text-slate-500 leading-snug block mt-0.5">
+                {language === 'fr' ? 'Actes certifiés au greffe et administrations' : 'Certified acts with tribunals and authorities'}
+              </span>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-slate-300 transition">
+              <div className="w-8 h-8 rounded-lg bg-orange-50 text-jevelin-orange flex items-center justify-center mb-2 font-bold">
+                <Clock className="w-4 h-4" />
+              </div>
+              <span className="font-bold text-xs text-slate-900 block font-heading">
+                {language === 'fr' ? 'Délai Express (72h)' : 'Fast-Track (72h)'}
+              </span>
+              <span className="text-[11px] text-slate-500 leading-snug block mt-0.5">
+                {language === 'fr' ? 'Constitution légale et délivrance rapide' : 'Rapid incorporation and filing execution'}
+              </span>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-slate-300 transition">
+              <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-2 font-bold">
+                <Shield className="w-4 h-4" />
+              </div>
+              <span className="font-bold text-xs text-slate-900 block font-heading">
+                {language === 'fr' ? 'Entretien Diagnostic Inclus' : 'Intake Diagnostic Included'}
+              </span>
+              <span className="text-[11px] text-slate-500 leading-snug block mt-0.5">
+                {language === 'fr' ? 'Cadrage préalable sans engagement' : 'Prior scoping and legal form advisory'}
+              </span>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-slate-300 transition">
+              <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center mb-2 font-bold">
+                <MapPin className="w-4 h-4" />
+              </div>
+              <span className="font-bold text-xs text-slate-900 block font-heading">
+                {language === 'fr' ? 'Omnisport Rue Foé, Yaoundé' : 'Omnisport Rue Foé, Yaoundé'}
+              </span>
+              <span className="text-[11px] text-slate-500 leading-snug block mt-0.5">
+                {language === 'fr' ? 'Présentiel au siège ou visioconférence' : 'In-person at HQ or secure video call'}
+              </span>
+            </div>
           </div>
 
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+          {/* Action Row */}
+          <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={() => openAssistance(language === 'fr' ? 'Entretien Diagnostic & Accompagnement' : 'Diagnostic Interview & Assistance')}
-              className="inline-flex items-center px-8 py-3.5 font-heading font-extrabold text-xs uppercase tracking-[0.15em] text-white bg-jevelin-dark hover:bg-slate-800 shadow-sm transition group"
+              className="inline-flex items-center px-8 py-3.5 rounded-xl font-heading font-extrabold text-xs uppercase tracking-[0.15em] text-white bg-slate-900 hover:bg-jevelin-orange shadow-md transition-all duration-200 group"
             >
               <span>{language === 'fr' ? 'Réserver un Entretien Diagnostic' : 'Book a Diagnostic Interview'}</span>
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </button>
-            <div className="inline-flex items-center px-5 py-3 font-heading font-extrabold text-xs uppercase tracking-[0.15em] text-slate-800 bg-white border border-slate-300">
-              <PhoneCall className="w-4 h-4 mr-2 text-slate-600 flex-shrink-0" />
+
+            <div className="inline-flex items-center px-5 py-3 rounded-xl font-heading font-extrabold text-xs uppercase tracking-[0.12em] text-slate-800 bg-slate-50 border border-slate-200 shadow-xs">
+              <PhoneCall className="w-4 h-4 mr-2 text-jevelin-orange flex-shrink-0" />
               <div className="flex items-center space-x-1.5">
                 <a href="tel:+237673841821" className="hover:text-jevelin-orange transition">
                   +237 673 84 18 21
@@ -131,206 +249,421 @@ export const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7 Practice Areas Full In-Depth List */}
-      <section className="py-16 lg:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {t.whatWeOffer.services.map((service, index) => {
-            const IconComp = SERVICE_ICONS[service.iconName] || Briefcase;
-            const isEven = index % 2 === 1;
-
-            return (
-              <div
-                key={service.id}
-                id={service.id}
-                className="scroll-mt-28 bg-white rounded-3xl p-8 sm:p-10 lg:p-12 border border-slate-200 shadow-xs hover:shadow-xl transition-all duration-300"
+      {/* =========================================================================
+          INTERACTIVE CATEGORY FILTER & REAL-TIME SEARCH (Clear on White)
+          ========================================================================= */}
+      <section className="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-4 shadow-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            {/* Category Filter Pills */}
+            <div className="flex items-center flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => setSelectedCategory('all')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold font-heading transition-all ${
+                  selectedCategory === 'all'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200/80'
+                }`}
               >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                  {/* Left Column: Title & Overview */}
-                  <div className={`lg:col-span-7 space-y-6 ${isEven ? 'lg:order-2' : ''}`}>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 rounded-2xl bg-accent-50 text-jevelin-orange flex items-center justify-center font-bold">
-                        <IconComp className="w-6 h-6" />
-                      </div>
-                      <span className="text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-slate-100 text-slate-700">
-                        {service.badge}
-                      </span>
-                    </div>
+                {language === 'fr' ? 'Tous les Domaines (7)' : 'All Practice Areas (7)'}
+              </button>
 
-                    <h2 className="text-2xl sm:text-3xl font-extrabold font-heading text-jevelin-dark">
-                      {service.title}
-                    </h2>
+              <button
+                type="button"
+                onClick={() => setSelectedCategory('legal')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold font-heading transition-all ${
+                  selectedCategory === 'legal'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200/80'
+                }`}
+              >
+                {language === 'fr' ? 'Création & Implantation (3)' : 'Corporate & Legal (3)'}
+              </button>
 
-                    <p className="text-base text-slate-700 font-medium leading-relaxed">
-                      {service.summary}
-                    </p>
+              <button
+                type="button"
+                onClick={() => setSelectedCategory('tax')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold font-heading transition-all ${
+                  selectedCategory === 'tax'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200/80'
+                }`}
+              >
+                {language === 'fr' ? 'Fiscalité & DSF (2)' : 'Tax & Accounting (2)'}
+              </button>
 
-                    <p className="text-sm text-slate-600 leading-relaxed">
-                      {service.description}
-                    </p>
+              <button
+                type="button"
+                onClick={() => setSelectedCategory('procurement')}
+                className={`px-4 py-2 rounded-xl text-xs font-bold font-heading transition-all ${
+                  selectedCategory === 'procurement'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200/80'
+                }`}
+              >
+                {language === 'fr' ? 'Marchés Publics & DAO (2)' : 'Public Tenders & DAO (2)'}
+              </button>
+            </div>
 
-                    {/* Action Buttons */}
-                    <div className="pt-2 flex flex-wrap items-center gap-3">
-                      <button
-                        type="button"
-                        onClick={() => openAssistance(service.title)}
-                        className="inline-flex items-center px-6 py-3.5 rounded-md font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-jevelin-dark hover:bg-slate-800 shadow-sm hover:shadow transition group"
-                      >
-                        <span>
-                          {language === 'fr'
-                            ? `Obtenir un accompagnement`
-                            : `Request Support`}
-                        </span>
-                        <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                      </button>
-
-                      <Link
-                        to={SERVICE_ID_TO_CANONICAL[service.id] || `/services#${service.id}`}
-                        className="inline-flex items-center px-5 py-3.5 rounded-md font-heading font-bold text-xs uppercase tracking-wider text-slate-700 hover:text-jevelin-orange bg-slate-100 hover:bg-slate-200 border border-slate-200 transition group"
-                      >
-                        <span>
-                          {language === 'fr' ? 'Consulter la page détaillée & FAQ' : 'View Full Details & FAQs'}
-                        </span>
-                        <ArrowUpRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-jevelin-orange" />
-                      </Link>
-                    </div>
-                  </div>
-
-                  {/* Right Column: Deliverables & Prerequisites Card */}
-                  <div className={`lg:col-span-5 ${isEven ? 'lg:order-1' : ''}`}>
-                    <div className="p-6 sm:p-7 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-6">
-                      {/* Media Card */}
-                      <div className="relative h-44 sm:h-48 w-full overflow-hidden rounded-xl border border-slate-200/90 shadow-xs group">
-                        <img
-                          src={SERVICE_IMAGES[service.id] || '/asset/consultant-holding-dossiers.webp'}
-                          alt={service.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex items-end justify-between p-3.5">
-                          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded">
-                            3M CONSULTING · YAOUNDÉ
-                          </span>
-                          <span className="text-[10px] font-bold tracking-wider uppercase text-white bg-jevelin-orange px-2 py-0.5 rounded shadow-xs">
-                            {language === 'fr' ? 'EXPERTISE' : 'EXPERTISE'}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Deliverables */}
-                      <div className="space-y-3">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center">
-                          <CheckCircle2 className="w-3.5 h-3.5 mr-1.5 text-brand-600" />
-                          <span>
-                            {language === 'fr' ? 'Ce que nous prenons en charge' : 'Key Deliverables'}
-                          </span>
-                        </h4>
-                        <ul className="space-y-2 text-xs sm:text-sm text-slate-700">
-                          {service.deliverables.map((item, i) => (
-                            <li key={i} className="flex items-start">
-                              <span className="w-1.5 h-1.5 rounded-full bg-brand-600 mt-2 mr-2 flex-shrink-0" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Required Documents / Prerequisites */}
-                      <div className="space-y-3 pt-4 border-t border-slate-200">
-                        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center">
-                          <FileText className="w-3.5 h-3.5 mr-1.5 text-accent-600" />
-                          <span>
-                            {language === 'fr' ? 'Éléments à prévoir' : 'Prerequisites & Documents'}
-                          </span>
-                        </h4>
-                        <ul className="space-y-1.5 text-xs text-slate-600">
-                          {service.documentsRequired.map((doc, idx) => (
-                            <li key={idx} className="flex items-center">
-                              <span className="w-1 h-1 rounded-full bg-slate-400 mr-2" />
-                              <span>{doc}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Detailed Catalogue Embed for Creation d'Entreprise */}
-                  {service.id === 'creation-entreprise' && (
-                    <div className="lg:col-span-12 pt-8 border-t border-slate-200 mt-4 space-y-6">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-slate-900 text-white p-6 rounded-2xl">
-                        <div className="space-y-1">
-                          <div className="flex items-center space-x-2">
-                            <span className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded bg-jevelin-orange text-slate-950">
-                              CATALOGUE OFFICIEL · OCT 30, 2026
-                            </span>
-                            <span className="text-xs text-accent-300 font-bold">@MAYA MICHAEL</span>
-                          </div>
-                          <h3 className="text-lg sm:text-xl font-bold font-heading">
-                            {language === 'fr'
-                              ? 'Catalogue des Prestations – Création d’Entreprise (6 Volets + Prestations Additionnelles)'
-                              : 'Service Catalogue – Business Incorporation (6 Pillars + Additional Services)'}
-                          </h3>
-                          <p className="text-xs text-slate-300">
-                            {language === 'fr'
-                              ? 'Consultez les détails exhaustifs : constitution, CNPS, compte bancaire, charte graphique, cachets officiels, valise d’entreprise et prestations additionnelles.'
-                              : 'View all comprehensive details: incorporation, CNPS, bank account, brand identity, stamps, corporate briefcase, and additional services.'}
-                          </p>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => setShowCreationCatalogue(!showCreationCatalogue)}
-                          className="inline-flex items-center px-5 py-3 rounded-lg font-heading font-extrabold text-xs uppercase tracking-wider text-slate-900 bg-jevelin-orange hover:bg-jevelin-orangeHover shadow-md transition flex-shrink-0"
-                        >
-                          <span>
-                            {showCreationCatalogue
-                              ? (language === 'fr' ? 'Masquer le Catalogue' : 'Hide Catalogue')
-                              : (language === 'fr' ? 'Afficher le Catalogue Complet' : 'Show Full Catalogue')}
-                          </span>
-                        </button>
-                      </div>
-
-                      {showCreationCatalogue && (
-                        <div className="pt-2">
-                          <CompanyCreationCatalogue
-                            onSelectService={(serviceName) => openAssistance(serviceName)}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+            {/* Search Input Box */}
+            <div className="relative w-full md:w-80">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={language === 'fr' ? 'Filtrer (ex: SARL, DSF, CNPS, Bail, DAO...)' : 'Filter by keyword (DSF, CNPS, DAO...)'}
+                className="w-full pl-10 pr-8 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-jevelin-orange/30 focus:border-jevelin-orange transition"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-bold"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Bottom CTA Block with Authentic Photo */}
-      <section className="bg-gradient-to-r from-jevelin-dark via-slate-900 to-navy-950 py-16 text-white border-t border-slate-800">
+      {/* =========================================================================
+          THE 7 PRACTICE AREAS CARDS · High-Contrast Clarity on White Background
+          ========================================================================= */}
+      <section className="py-12 lg:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {filteredServices.length === 0 ? (
+            <div className="text-center py-16 px-4 bg-slate-50 rounded-3xl border border-slate-200 space-y-4">
+              <Filter className="w-10 h-10 text-slate-400 mx-auto" />
+              <h3 className="text-lg font-bold text-slate-800">
+                {language === 'fr' ? 'Aucun domaine ne correspond à votre recherche' : 'No service matches your search query'}
+              </h3>
+              <p className="text-sm text-slate-500">
+                {language === 'fr' ? 'Essayez avec un autre mot-clé ou réinitialisez les filtres.' : 'Try another keyword or reset the filter.'}
+              </p>
+              <button
+                onClick={() => {
+                  setSearchQuery('');
+                  setSelectedCategory('all');
+                }}
+                className="px-6 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition"
+              >
+                {language === 'fr' ? 'Réinitialiser les filtres' : 'Reset filters'}
+              </button>
+            </div>
+          ) : (
+            filteredServices.map((service, index) => {
+              const IconComp = SERVICE_ICONS[service.iconName] || Briefcase;
+              const metric = SERVICE_METRICS[service.id]?.[language] || {
+                delay: language === 'fr' ? 'Traitement rapide' : 'Fast processing',
+                format: language === 'fr' ? 'Accompagnement expert' : 'Expert support',
+              };
+
+              return (
+                <article
+                  key={service.id}
+                  id={service.id}
+                  className="group relative scroll-mt-36 bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-jevelin-orange/40 transition-all duration-300 p-6 sm:p-9 lg:p-12 overflow-hidden"
+                >
+                  {/* Subtle top indicator bar */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-jevelin-orange/20 via-jevelin-orange to-jevelin-orange/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  {/* Header Row: Number + Icon + Title */}
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 pb-6 border-b border-slate-100">
+                    <div className="flex items-start space-x-4">
+                      {/* Icon Container */}
+                      <div className="w-14 h-14 rounded-2xl bg-orange-50 border border-orange-100 text-jevelin-orange flex items-center justify-center flex-shrink-0 shadow-xs">
+                        <IconComp className="w-7 h-7 stroke-[1.8]" />
+                      </div>
+
+                      <div className="space-y-1">
+                        <div className="flex items-center flex-wrap gap-2">
+                          <span className="text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700">
+                            {service.badge}
+                          </span>
+                          <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                            ✓ {metric.delay}
+                          </span>
+                        </div>
+
+                        <h2 className="text-2xl sm:text-3xl font-extrabold font-heading text-slate-900 tracking-tight">
+                          {service.title}
+                        </h2>
+                      </div>
+                    </div>
+
+                    {/* Numeric Index */}
+                    <div className="hidden md:flex flex-col items-end">
+                      <span className="text-4xl sm:text-5xl font-black font-heading text-slate-100 group-hover:text-jevelin-orange/30 transition-colors">
+                        0{index + 1}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Two-Column Grid: Left = Summary & Deliverables | Right = Media & Prerequisites */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 pt-6 items-start">
+                    {/* Left Column: Summary & What We Deliver */}
+                    <div className="lg:col-span-7 space-y-6">
+                      <p className="text-base sm:text-lg text-slate-800 font-semibold leading-relaxed">
+                        {service.summary}
+                      </p>
+
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        {service.description}
+                      </p>
+
+                      {/* What We Deliver (Detailed List) */}
+                      <div className="space-y-3 p-5 rounded-2xl bg-slate-50/70 border border-slate-200/80">
+                        <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center">
+                          <CheckCircle2 className="w-4 h-4 mr-2 text-emerald-600 flex-shrink-0" />
+                          <span>
+                            {language === 'fr' ? 'Ce que nous prenons en charge (Délivrables Clés) :' : 'What We Deliver (Key Deliverables):'}
+                          </span>
+                        </h3>
+
+                        <ul className="space-y-2.5 text-xs sm:text-sm text-slate-700">
+                          {service.deliverables.map((item, i) => (
+                            <li key={i} className="flex items-start">
+                              <span className="w-1.5 h-1.5 rounded-full bg-jevelin-orange mt-2 mr-2.5 flex-shrink-0" />
+                              <span className="leading-snug">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Action Buttons Row */}
+                      <div className="pt-2 flex flex-wrap items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={() => openAssistance(service.title)}
+                          className="inline-flex items-center px-6 py-3.5 rounded-xl font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-slate-900 hover:bg-jevelin-orange shadow-md transition-all duration-200 group"
+                        >
+                          <span>
+                            {language === 'fr' ? 'Obtenir cet accompagnement' : 'Request This Support'}
+                          </span>
+                          <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </button>
+
+                        <Link
+                          to={SERVICE_ID_TO_CANONICAL[service.id] || `/services#${service.id}`}
+                          className="inline-flex items-center px-5 py-3.5 rounded-xl font-heading font-bold text-xs uppercase tracking-wider text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 shadow-xs transition-all duration-200 group"
+                        >
+                          <span>
+                            {language === 'fr' ? 'Guide complet & FAQ' : 'Full Guide & FAQs'}
+                          </span>
+                          <ArrowRight className="w-3.5 h-3.5 ml-1.5 text-jevelin-orange group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Right Column: Visual Preview & Prerequisites Card */}
+                    <div className="lg:col-span-5 space-y-5">
+                      <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-5">
+                        {/* Image Preview with Crisp Label */}
+                        <div className="relative h-44 sm:h-48 w-full overflow-hidden rounded-xl border border-slate-200 shadow-xs group">
+                          <img
+                            src={SERVICE_IMAGES[service.id] || '/asset/consultant-holding-dossiers.webp'}
+                            alt={service.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end justify-between p-3.5">
+                            <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-white bg-slate-900/90 backdrop-blur-sm px-2.5 py-1 rounded">
+                              3M CONSULTING · YAOUNDÉ
+                            </span>
+                            <span className="text-[10px] font-bold tracking-wider uppercase text-slate-950 bg-jevelin-orange px-2 py-0.5 rounded font-heading">
+                              {metric.format}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Prerequisites / Documents to Prepare */}
+                        <div className="space-y-3 pt-2">
+                          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center">
+                            <FileText className="w-3.5 h-3.5 mr-2 text-jevelin-orange" />
+                            <span>
+                              {language === 'fr' ? 'Éléments à prévoir pour votre dossier :' : 'Prerequisites & Documents to Prepare:'}
+                            </span>
+                          </h4>
+
+                          <ul className="space-y-2 text-xs text-slate-600">
+                            {service.documentsRequired.map((doc, idx) => (
+                              <li key={idx} className="flex items-start">
+                                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-1.5 mr-2 flex-shrink-0" />
+                                <span>{doc}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Detailed Catalogue Embed for Creation d'Entreprise (Clean Executive White Card) */}
+                    {service.id === 'creation-entreprise' && (
+                      <div className="lg:col-span-12 pt-6 border-t border-slate-200 mt-2 space-y-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-slate-50 border border-slate-200/90 p-6 rounded-2xl">
+                          <div className="space-y-1 text-left">
+                            <div className="flex items-center space-x-2">
+                              <span className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-md bg-slate-900 text-white font-heading">
+                                CATALOGUE OFFICIEL · OCT 30, 2026
+                              </span>
+                              <span className="text-xs text-jevelin-orange font-bold">@MAYA MICHAEL</span>
+                            </div>
+                            <h3 className="text-lg sm:text-xl font-bold font-heading text-slate-900">
+                              {language === 'fr'
+                                ? 'Catalogue Détaillé : Création d’Entreprise (6 Volets + Prestations Additionnelles)'
+                                : 'Comprehensive Catalogue: Business Incorporation (6 Pillars + Additional Services)'}
+                            </h3>
+                            <p className="text-xs text-slate-600">
+                              {language === 'fr'
+                                ? 'Consultez les détails exhaustifs : constitution légale, CNPS, compte bancaire, charte graphique, cachets, valise d’entreprise et prestations additionnelles.'
+                                : 'Explore comprehensive details: incorporation, CNPS, bank account, brand identity, stamps, executive briefcase, and add-on services.'}
+                            </p>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => setShowCreationCatalogue(!showCreationCatalogue)}
+                            className="inline-flex items-center px-5 py-3 rounded-xl font-heading font-extrabold text-xs uppercase tracking-wider text-slate-900 bg-jevelin-orange hover:bg-jevelin-orangeHover shadow-sm transition flex-shrink-0"
+                          >
+                            <span>
+                              {showCreationCatalogue
+                                ? (language === 'fr' ? 'Masquer le Catalogue' : 'Hide Catalogue')
+                                : (language === 'fr' ? 'Afficher le Catalogue Complet' : 'Show Full Catalogue')}
+                            </span>
+                            {showCreationCatalogue ? (
+                              <ChevronUp className="w-4 h-4 ml-1.5" />
+                            ) : (
+                              <ChevronDown className="w-4 h-4 ml-1.5" />
+                            )}
+                          </button>
+                        </div>
+
+                        {showCreationCatalogue && (
+                          <div className="pt-2">
+                            <CompanyCreationCatalogue
+                              onSelectService={(serviceName) => openAssistance(serviceName)}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            })
+          )}
+        </div>
+      </section>
+
+      {/* =========================================================================
+          FAST-TRACK PROCESS · "Comment Nous Travaillons" on Pure White
+          ========================================================================= */}
+      <section className="py-16 bg-slate-50 border-y border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-center">
+          <div className="space-y-3 max-w-3xl mx-auto">
+            <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-slate-400 font-heading block">
+              {language === 'fr' ? 'MÉTHODOLOGIE RAPIDE & ÉPROUVÉE' : 'PROVEN FAST METHODOLOGY'}
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold font-heading text-slate-900 tracking-tight">
+              {language === 'fr'
+                ? 'Votre démarche en 3 étapes claires et sans stress'
+                : 'Your procedure in 3 simple, stress-free steps'}
+            </h2>
+            <div className="flex justify-center">
+              <div className="w-12 h-[3px] bg-jevelin-orange rounded-full" />
+            </div>
+            <p className="text-slate-600 text-sm sm:text-base">
+              {language === 'fr'
+                ? 'Une organisation transparente et rigoureuse pour garantir la conformité et la rapidité de vos actes.'
+                : 'A transparent and rigorous process to ensure speed, compliance, and guaranteed delivery.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            {/* Step 1 */}
+            <div className="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-4 relative group hover:border-slate-300 transition">
+              <div className="w-12 h-12 rounded-2xl bg-slate-900 text-white font-black font-heading flex items-center justify-center text-lg shadow-sm">
+                01
+              </div>
+              <h3 className="text-lg font-bold font-heading text-slate-900">
+                {language === 'fr' ? 'Diagnostic & Cadrage Préalable' : 'Intake & Scoping Diagnostic'}
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                {language === 'fr'
+                  ? 'Entretien stratégique (présentiel ou visio) pour auditer vos besoins, valider les formes juridiques optimales et définir la liste exacte des pièces à fournir.'
+                  : 'Strategic consultation to audit your requirements, select optimal legal forms, and verify required documents before commitment.'}
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-4 relative group hover:border-slate-300 transition">
+              <div className="w-12 h-12 rounded-2xl bg-jevelin-orange text-slate-950 font-black font-heading flex items-center justify-center text-lg shadow-sm">
+                02
+              </div>
+              <h3 className="text-lg font-bold font-heading text-slate-900">
+                {language === 'fr' ? 'Montage & Dépôt Administratif' : 'Filing & Administrative Execution'}
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                {language === 'fr'
+                  ? 'Rédaction rigoureuse des statuts, déclarations fiscales, dossiers CNPS ou DAO, puis liaison directe avec le greffe du tribunal et les administrations.'
+                  : 'Flawless drafting of bylaws, tax declarations, CNPS filings, or tender dossiers with direct authority liaison.'}
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-4 relative group hover:border-slate-300 transition">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white font-black font-heading flex items-center justify-center text-lg shadow-sm">
+                03
+              </div>
+              <h3 className="text-lg font-bold font-heading text-slate-900">
+                {language === 'fr' ? 'Délivrance & Suivi Continu' : 'Delivery & Ongoing Advisory'}
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                {language === 'fr'
+                  ? 'Remise en main propre de vos actes officiels certifiés (RCCM, NIU, attestation CNPS, cachets, etc.) et accompagnement permanent dans la vie de votre structure.'
+                  : 'Hand-delivery of certified official records (RCCM, NIU, CNPS, corporate briefcase) and ongoing advisory support.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          BOTTOM CTA BLOCK · Clear, Executive, High-Conversion
+          ========================================================================= */}
+      <section className="bg-slate-900 py-16 text-white border-t border-slate-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-5 text-left">
               <span className="text-[11px] font-bold tracking-[0.25em] uppercase text-accent-300 block">
                 {language === 'fr' ? 'ACCOMPAGNEMENT SUR MESURE' : 'TAILORED SUPPORT'}
               </span>
+
               <h2 className="text-2xl sm:text-4xl font-extrabold font-heading text-white">
                 {language === 'fr'
                   ? 'Un besoin spécifique ou une formalité complexe ?'
                   : 'A Specific Requirement or Custom Procedure?'}
               </h2>
+
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
                 {language === 'fr'
                   ? 'Prenez contact avec notre équipe à Yaoundé. Nous analysons la faisabilité de votre projet, définissons les pièces à réunir et prenons en main votre démarche sans délai.'
                   : 'Reach out to our team in Yaoundé. We review your requirements, determine the prerequisites, and manage your procedure immediately.'}
               </p>
+
               <div className="pt-2 flex flex-wrap gap-3">
                 <button
                   onClick={() => openAssistance('')}
-                  className="px-8 py-3.5 rounded-lg font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-jevelin-orange hover:bg-jevelin-orangeHover shadow-md transition"
+                  className="px-8 py-3.5 rounded-xl font-heading font-extrabold text-xs uppercase tracking-wider text-slate-900 bg-jevelin-orange hover:bg-jevelin-orangeHover shadow-md transition"
                 >
                   {t.navbar.ctaAssistance}
                 </button>
-                <div className="inline-flex items-center px-5 py-3 rounded-lg font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-white/10 border border-white/20">
+
+                <div className="inline-flex items-center px-5 py-3 rounded-xl font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-white/10 border border-white/20">
                   <PhoneCall className="w-4 h-4 mr-2 text-jevelin-orange flex-shrink-0" />
                   <div className="flex items-center space-x-2">
                     <a href="tel:+237673841821" className="hover:text-jevelin-orange transition">
@@ -364,7 +697,7 @@ export const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Global Modal */}
+      {/* Global Request Assistance Modal */}
       <RequestAssistanceModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
