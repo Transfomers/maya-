@@ -203,7 +203,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         logo: 'https://3mconsultingsarl.com/asset/logo-3m-official.webp',
         image: 'https://3mconsultingsarl.com/asset/partner-office-sign-landscape.webp',
         description: finalDesc,
-        telephone: '+237673841821',
+        telephone: ['+237673841821', '+237698668761'],
         email: 'contact@3mconsultingsarl.com',
         priceRange: '$$',
         address: {

@@ -719,14 +719,17 @@ export const CompanyCreationCatalogue: React.FC<CompanyCreationCatalogueProps> =
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <a
-              href="tel:+237673841821"
-              className="text-white font-bold hover:text-jevelin-orange transition flex items-center"
-            >
-              <PhoneCall className="w-3.5 h-3.5 mr-1.5 text-jevelin-orange" />
-              +237 673 84 18 21
-            </a>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+            <div className="flex items-center space-x-1.5 text-white font-bold">
+              <PhoneCall className="w-3.5 h-3.5 mr-1 text-jevelin-orange flex-shrink-0" />
+              <a href="tel:+237673841821" className="hover:text-jevelin-orange transition">
+                +237 673 84 18 21
+              </a>
+              <span className="text-white/40">/</span>
+              <a href="tel:+237698668761" className="hover:text-jevelin-orange transition">
+                +237 698 66 87 61
+              </a>
+            </div>
             <span>·</span>
             <span>Omnisport Rue Foé, Yaoundé, Cameroun</span>
           </div>

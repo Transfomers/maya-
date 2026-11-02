@@ -117,13 +117,18 @@ export const ServicesPage: React.FC = () => {
             >
               <span>{language === 'fr' ? 'Réserver un Entretien Diagnostic' : 'Book a Diagnostic Interview'}</span>
             </button>
-            <a
-              href="tel:+237673841821"
-              className="inline-flex items-center px-6 py-3.5 font-heading font-extrabold text-xs uppercase tracking-[0.15em] text-slate-800 bg-white hover:bg-slate-50 border border-slate-300 transition"
-            >
-              <PhoneCall className="w-4 h-4 mr-2 text-slate-600" />
-              <span>+237 673 84 18 21</span>
-            </a>
+            <div className="inline-flex items-center px-5 py-3 font-heading font-extrabold text-xs uppercase tracking-[0.15em] text-slate-800 bg-white border border-slate-300">
+              <PhoneCall className="w-4 h-4 mr-2 text-slate-600 flex-shrink-0" />
+              <div className="flex items-center space-x-1.5">
+                <a href="tel:+237673841821" className="hover:text-jevelin-orange transition">
+                  +237 673 84 18 21
+                </a>
+                <span className="text-slate-300">/</span>
+                <a href="tel:+237698668761" className="hover:text-jevelin-orange transition">
+                  +237 698 66 87 61
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -327,13 +332,18 @@ export const ServicesPage: React.FC = () => {
                 >
                   {t.navbar.ctaAssistance}
                 </button>
-                <a
-                  href="tel:+237673841821"
-                  className="inline-flex items-center px-6 py-3.5 rounded-lg font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 border border-white/20 transition"
-                >
-                  <PhoneCall className="w-4 h-4 mr-2 text-jevelin-orange" />
-                  <span>+237 673 84 18 21</span>
-                </a>
+                <div className="inline-flex items-center px-5 py-3 rounded-lg font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-white/10 border border-white/20">
+                  <PhoneCall className="w-4 h-4 mr-2 text-jevelin-orange flex-shrink-0" />
+                  <div className="flex items-center space-x-2">
+                    <a href="tel:+237673841821" className="hover:text-jevelin-orange transition">
+                      +237 673 84 18 21
+                    </a>
+                    <span className="text-white/40">/</span>
+                    <a href="tel:+237698668761" className="hover:text-jevelin-orange transition">
+                      +237 698 66 87 61
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 

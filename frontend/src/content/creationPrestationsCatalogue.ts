@@ -133,7 +133,7 @@ export const CREATION_CATALOGUE_FR: EnterpriseCreationCatalogueData = {
         id: "call",
         title: "Entretien Téléphonique & WhatsApp",
         badge: "Direct & Immédiat",
-        description: "Échange interactif immédiat au +237 673 84 18 21 avec un conseiller disponible sans attendre."
+        description: "Échange interactif immédiat au +237 673 84 18 21 / +237 698 66 87 61 avec un conseiller disponible sans attendre."
       }
     ],
     ctaButton: "Réserver mon Entretien Diagnostic",
@@ -439,7 +439,7 @@ export const CREATION_CATALOGUE_EN: EnterpriseCreationCatalogueData = {
         id: "call",
         title: "Direct Phone & WhatsApp Call",
         badge: "Instant Priority",
-        description: "Immediate direct conversation at +237 673 84 18 21 with a dedicated corporate advisor."
+        description: "Immediate direct conversation at +237 673 84 18 21 / +237 698 66 87 61 with a dedicated corporate advisor."
       }
     ],
     ctaButton: "Book My Diagnostic Interview",

@@ -427,6 +427,13 @@ export const AboutPage: React.FC = () => {
                     <Phone className="w-3.5 h-3.5" />
                     <span>+237 673 84 18 21</span>
                   </a>
+                  <a
+                    href="tel:+237698668761"
+                    className="inline-flex items-center space-x-1.5 text-slate-700 hover:text-jevelin-orange"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>+237 698 66 87 61</span>
+                  </a>
                 </div>
               </div>
             </div>

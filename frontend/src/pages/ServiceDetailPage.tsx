@@ -106,7 +106,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ forcedSlug
     provider: {
       '@type': 'ProfessionalService',
       name: '3M Consulting SARL',
-      telephone: '+237673841821',
+      telephone: ['+237673841821', '+237698668761'],
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'Omnisport Rue Foé',
@@ -245,12 +245,17 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ forcedSlug
                   <span>{content.ctaSecondary}</span>
                 </a>
 
-                <a
-                  href="tel:+237673841821"
-                  className="inline-flex items-center px-5 py-3.5 rounded-lg font-heading font-bold text-xs uppercase tracking-wider text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition"
-                >
-                  <span>+237 673 84 18 21</span>
-                </a>
+                <div className="inline-flex items-center px-4 py-3 rounded-lg font-heading font-bold text-xs uppercase tracking-wider text-slate-300 bg-white/5 border border-white/10">
+                  <div className="flex items-center space-x-1.5">
+                    <a href="tel:+237673841821" className="hover:text-white transition">
+                      +237 673 84 18 21
+                    </a>
+                    <span className="text-white/30">/</span>
+                    <a href="tel:+237698668761" className="hover:text-white transition">
+                      +237 698 66 87 61
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -476,9 +481,15 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ forcedSlug
 
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between py-1 border-b border-white/10">
-                    <span className="text-slate-400">Téléphone :</span>
+                    <span className="text-slate-400">Téléphone 1 :</span>
                     <a href="tel:+237673841821" className="font-bold text-accent-300 hover:underline">
                       +237 673 84 18 21
+                    </a>
+                  </div>
+                  <div className="flex justify-between py-1 border-b border-white/10">
+                    <span className="text-slate-400">Téléphone 2 :</span>
+                    <a href="tel:+237698668761" className="font-bold text-accent-300 hover:underline">
+                      +237 698 66 87 61
                     </a>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/10">
@@ -666,13 +677,18 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ forcedSlug
                 >
                   {content.ctaPrimary}
                 </button>
-                <a
-                  href="tel:+237673841821"
-                  className="inline-flex items-center px-6 py-3.5 rounded-lg font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 border border-white/20 transition"
-                >
-                  <PhoneCall className="w-4 h-4 mr-2 text-jevelin-orange" />
-                  <span>+237 673 84 18 21</span>
-                </a>
+                <div className="inline-flex items-center px-5 py-3 rounded-lg font-heading font-extrabold text-xs uppercase tracking-wider text-white bg-white/10 border border-white/20">
+                  <PhoneCall className="w-4 h-4 mr-2 text-jevelin-orange flex-shrink-0" />
+                  <div className="flex items-center space-x-2">
+                    <a href="tel:+237673841821" className="hover:text-jevelin-orange transition">
+                      +237 673 84 18 21
+                    </a>
+                    <span className="text-white/40">/</span>
+                    <a href="tel:+237698668761" className="hover:text-jevelin-orange transition">
+                      +237 698 66 87 61
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
 

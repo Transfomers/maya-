@@ -273,14 +273,14 @@ export const HomePage: React.FC = () => {
           STAT COUNTER BAR - Floating white strip (Jevelin style)
           ========================================================================= */}
       <div className="relative z-20 bg-white border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-3 sm:gap-6 lg:gap-8 items-center">
             {/* Stat 1 */}
-            <div className="flex items-center space-x-4" ref={stat1.ref}>
-              <div className="text-5xl sm:text-6xl font-black font-heading text-jevelin-dark">
+            <div className="flex items-center space-x-2 sm:space-x-3.5 min-w-0" ref={stat1.ref}>
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading text-jevelin-dark flex-shrink-0 leading-none">
                 {stat1.count}
               </div>
-              <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400 leading-tight">
+              <div className="text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] text-slate-500 leading-tight">
                 {language === 'fr' ? (
                   <>Domaines<br />d'expertise</>
                 ) : (
@@ -290,11 +290,11 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Stat 2 */}
-            <div className="flex items-center space-x-4" ref={stat2.ref}>
-              <div className="text-5xl sm:text-6xl font-black font-heading text-jevelin-dark">
+            <div className="flex items-center space-x-2 sm:space-x-3.5 min-w-0" ref={stat2.ref}>
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading text-jevelin-dark flex-shrink-0 leading-none">
                 {stat2.count}%
               </div>
-              <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400 leading-tight">
+              <div className="text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] text-slate-500 leading-tight">
                 {language === 'fr' ? (
                   <>Accompagnement<br />sur-mesure</>
                 ) : (
@@ -304,11 +304,11 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Stat 3 */}
-            <div className="flex items-center space-x-4" ref={stat3.ref}>
-              <div className="text-5xl sm:text-6xl font-black font-heading text-jevelin-dark">
+            <div className="flex items-center space-x-2 sm:space-x-3.5 min-w-0" ref={stat3.ref}>
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading text-jevelin-dark flex-shrink-0 leading-none">
                 {stat3.count}+
               </div>
-              <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400 leading-tight">
+              <div className="text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] text-slate-500 leading-tight">
                 {language === 'fr' ? (
                   <>Années d'expertise<br />combinée</>
                 ) : (
@@ -318,11 +318,11 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Stat 4 */}
-            <div className="flex items-center space-x-4">
-              <div className="text-2xl sm:text-3xl font-black font-heading text-jevelin-dark">
+            <div className="flex items-center space-x-2 sm:space-x-3.5 min-w-0">
+              <div className="text-lg sm:text-2xl md:text-3xl font-black font-heading text-jevelin-dark flex-shrink-0 leading-none">
                 YAOUNDÉ
               </div>
-              <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400 leading-tight">
+              <div className="text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] text-slate-500 leading-tight">
                 {language === 'fr' ? (
                   <>Omnisport<br />Rue Foé</>
                 ) : (

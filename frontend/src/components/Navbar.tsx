@@ -77,12 +77,21 @@ export const Navbar: React.FC = () => {
                 <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-400 block">
                   {language === 'fr' ? 'APPEL DIRECT' : 'DIRECT CALL'}
                 </span>
-                <a
-                  href="tel:+237673841821"
-                  className="text-xs font-semibold text-slate-900 hover:text-jevelin-orange transition-colors"
-                >
-                  +237 673 84 18 21
-                </a>
+                <div className="flex items-center space-x-1.5 text-xs font-semibold text-slate-900">
+                  <a
+                    href="tel:+237673841821"
+                    className="hover:text-jevelin-orange transition-colors"
+                  >
+                    +237 673 84 18 21
+                  </a>
+                  <span className="text-slate-300">/</span>
+                  <a
+                    href="tel:+237698668761"
+                    className="hover:text-jevelin-orange transition-colors"
+                  >
+                    +237 698 66 87 61
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -311,10 +320,14 @@ export const Navbar: React.FC = () => {
                   <MapPin className="w-3.5 h-3.5 mr-2 text-jevelin-orange flex-shrink-0" />
                   <span>Omnisport, Rue Foé, Yaoundé</span>
                 </div>
-                <div className="flex items-center">
-                  <Phone className="w-3.5 h-3.5 mr-2 text-jevelin-orange flex-shrink-0" />
+                <div className="flex items-center flex-wrap gap-x-1.5">
+                  <Phone className="w-3.5 h-3.5 mr-1 text-jevelin-orange flex-shrink-0" />
                   <a href="tel:+237673841821" className="hover:underline font-bold">
                     +237 673 84 18 21
+                  </a>
+                  <span className="text-slate-300">/</span>
+                  <a href="tel:+237698668761" className="hover:underline font-bold">
+                    +237 698 66 87 61
                   </a>
                 </div>
                 <div className="flex items-center">

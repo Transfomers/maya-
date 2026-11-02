@@ -90,12 +90,21 @@ export const Footer: React.FC = () => {
                 <span className="font-bold uppercase tracking-[0.15em] text-slate-400 block text-[10px]">
                   {language === 'fr' ? 'TÉLÉPHONE' : 'TELEPHONE'}
                 </span>
-                <a
-                  href="tel:+237673841821"
-                  className="font-semibold text-slate-900 hover:text-jevelin-orange transition-colors"
-                >
-                  +237 673 84 18 21
-                </a>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:gap-1.5 font-semibold text-slate-900">
+                  <a
+                    href="tel:+237673841821"
+                    className="hover:text-jevelin-orange transition-colors"
+                  >
+                    +237 673 84 18 21
+                  </a>
+                  <span className="hidden sm:inline text-slate-300">/</span>
+                  <a
+                    href="tel:+237698668761"
+                    className="hover:text-jevelin-orange transition-colors"
+                  >
+                    +237 698 66 87 61
+                  </a>
+                </div>
               </div>
             </div>
 
