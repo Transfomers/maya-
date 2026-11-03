@@ -14,8 +14,6 @@ import {
   FileText,
   Clock,
   PhoneCall,
-  ChevronDown,
-  ChevronUp,
   MapPin,
   Shield,
   ArrowRight,
@@ -23,7 +21,6 @@ import {
 import { useLanguage } from '../context/LanguageContext';
 import { SEOHead } from '../components/SEOHead';
 import { RequestAssistanceModal } from '../components/RequestAssistanceModal';
-import { CompanyCreationCatalogue } from '../components/CompanyCreationCatalogue';
 
 const SERVICE_ICONS: Record<string, React.ElementType> = {
   Building2,
@@ -82,7 +79,6 @@ export const ServicesPage: React.FC = () => {
   const { language, t } = useLanguage();
   const [modalOpen, setModalOpen] = useState(false);
   const [activeService, setActiveService] = useState<string>('');
-  const [showCreationCatalogue, setShowCreationCatalogue] = useState<boolean>(true);
   const location = useLocation();
 
   // Scroll to hash anchor on mount or location change
@@ -319,7 +315,9 @@ export const ServicesPage: React.FC = () => {
                           className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3.5 rounded-xl font-heading font-bold text-xs uppercase tracking-wider text-slate-700 hover:text-slate-900 bg-white hover:bg-slate-50 border border-slate-300 shadow-xs transition-all duration-200 group text-center"
                         >
                           <span>
-                            {language === 'fr' ? 'Guide complet & FAQ' : 'Full Guide & FAQs'}
+                            {service.id === 'creation-entreprise'
+                              ? (language === 'fr' ? 'Guide & Catalogue complet (11 Volets)' : 'Full Guide & Catalogue (11 Pillars)')
+                              : (language === 'fr' ? 'Guide complet & FAQ' : 'Full Guide & FAQs')}
                           </span>
                           <ArrowRight className="w-3.5 h-3.5 ml-1.5 text-jevelin-orange group-hover:translate-x-1 transition-transform" />
                         </Link>
@@ -367,57 +365,6 @@ export const ServicesPage: React.FC = () => {
                         </div>
                       </div>
                     </div>
-
-                    {/* Detailed Catalogue Embed for Creation d'Entreprise (Clean Executive White Card) */}
-                    {service.id === 'creation-entreprise' && (
-                      <div className="lg:col-span-12 pt-4 sm:pt-6 border-t border-slate-200 mt-2 space-y-4 sm:space-y-6">
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-slate-50 border border-slate-200/90 p-4 sm:p-6 rounded-xl sm:rounded-2xl">
-                          <div className="space-y-1 text-left">
-                            <div className="flex items-center space-x-2">
-                              <span className="text-[9px] sm:text-[10px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-md bg-slate-900 text-white font-heading">
-                                CATALOGUE OFFICIEL · OCT 30, 2026
-                              </span>
-                              <span className="text-xs text-jevelin-orange font-bold">@MAYA MICHAEL</span>
-                            </div>
-                            <h3 className="text-base sm:text-xl font-bold font-heading text-slate-900">
-                              {language === 'fr'
-                                ? 'Catalogue Détaillé : Création d’Entreprise (6 Volets + Prestations Additionnelles)'
-                                : 'Comprehensive Catalogue: Business Incorporation (6 Pillars + Additional Services)'}
-                            </h3>
-                            <p className="text-xs text-slate-600">
-                              {language === 'fr'
-                                ? 'Consultez les détails exhaustifs : constitution légale, CNPS, compte bancaire, charte graphique, cachets, valise d’entreprise et prestations additionnelles.'
-                                : 'Explore comprehensive details: incorporation, CNPS, bank account, brand identity, stamps, executive briefcase, and add-on services.'}
-                            </p>
-                          </div>
-
-                          <button
-                            type="button"
-                            onClick={() => setShowCreationCatalogue(!showCreationCatalogue)}
-                            className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-3 rounded-xl font-heading font-extrabold text-xs uppercase tracking-wider text-slate-900 bg-jevelin-orange hover:bg-jevelin-orangeHover shadow-sm transition flex-shrink-0 text-center"
-                          >
-                            <span>
-                              {showCreationCatalogue
-                                ? (language === 'fr' ? 'Masquer le Catalogue' : 'Hide Catalogue')
-                                : (language === 'fr' ? 'Afficher le Catalogue Complet' : 'Show Full Catalogue')}
-                            </span>
-                            {showCreationCatalogue ? (
-                              <ChevronUp className="w-4 h-4 ml-1.5" />
-                            ) : (
-                              <ChevronDown className="w-4 h-4 ml-1.5" />
-                            )}
-                          </button>
-                        </div>
-
-                        {showCreationCatalogue && (
-                          <div className="pt-2">
-                            <CompanyCreationCatalogue
-                              onSelectService={(serviceName) => openAssistance(serviceName)}
-                            />
-                          </div>
-                        )}
-                      </div>
-                    )}
                   </div>
                 </article>
               );
