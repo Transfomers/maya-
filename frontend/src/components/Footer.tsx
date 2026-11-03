@@ -178,8 +178,8 @@ export const Footer: React.FC = () => {
         =========================================================================
       */}
       <footer className="bg-jevelin-darker text-slate-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12">
             {/* Col 1: Brand & Bio (5 cols) */}
             <div className="lg:col-span-5 space-y-6">
               <Link to="/">
@@ -236,8 +236,8 @@ export const Footer: React.FC = () => {
               </div>
             </div>
 
-            {/* Col 2: Services (4 cols) */}
-            <div className="lg:col-span-4 space-y-5">
+            {/* Col 2: Services (4 cols) - Hidden on mobile for a shorter footer */}
+            <div className="hidden md:block lg:col-span-4 space-y-5">
               <h4 className="text-sm font-bold text-white font-heading">
                 {t.footer.servicesHeader}
               </h4>
@@ -252,8 +252,8 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Col 3: Navigation & Links (3 cols) */}
-            <div className="lg:col-span-3 space-y-5">
+            {/* Col 3: Navigation & Links (3 cols) - Hidden on mobile for a shorter footer */}
+            <div className="hidden md:block lg:col-span-3 space-y-5">
               <h4 className="text-sm font-bold text-white font-heading">
                 {t.footer.navigationHeader}
               </h4>
