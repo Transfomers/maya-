@@ -21,6 +21,7 @@ export const Footer: React.FC = () => {
   const { language, t } = useLanguage();
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [showHoursTooltip, setShowHoursTooltip] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('contact@3mconsultingsarl.com');
@@ -33,60 +34,76 @@ export const Footer: React.FC = () => {
       {/* 
         =========================================================================
         JEVELIN-STYLE PRE-FOOTER CONTACT STRIP
-        Contact CTA button + 4 icon widgets in a row
+        Contact CTA button + 4 icon widgets in a row (icons only on mobile)
         =========================================================================
       */}
-      <div className="bg-white border-t border-slate-200 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col xl:flex-row items-center justify-between gap-6">
+      <div className="bg-white border-t border-slate-200 py-6 sm:py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6">
           {/* Action CTA Button */}
           <div className="flex-shrink-0">
             <button
               onClick={() => setModalOpen(true)}
-              className="inline-flex items-center px-8 py-3.5 font-heading font-extrabold text-xs uppercase tracking-[0.15em] text-white bg-jevelin-dark hover:bg-slate-800 shadow-sm transition-all"
+              className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-3.5 font-heading font-extrabold text-xs uppercase tracking-[0.15em] text-white bg-jevelin-dark hover:bg-slate-800 shadow-sm transition-all"
             >
               <span>{language === 'fr' ? 'CONTACTEZ-NOUS' : 'CONTACT US'}</span>
             </button>
           </div>
 
-          {/* Contact Points */}
-          <div className="flex flex-wrap items-center justify-center xl:justify-end gap-8 sm:gap-10 text-xs">
+          {/* Contact Points - Icons only on mobile, with labels on md+ */}
+          <div className="flex items-center justify-center gap-3 sm:gap-5 md:gap-8 lg:gap-10 text-xs">
             {/* Address */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0">
+            <a
+              href="https://www.google.com/maps?rlz=1C5KXLH_enCM1220CM1220&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIGCAEQIxgnMgYIAhBFGDsyBggDEEUYOzIHCAQQABiABDIGCAUQRRg8MgYIBhBFGD0yBggHEEUYPNIBCDE2NTFqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=cm&sa=X&geocode=KVNFk2dAxYsQMUOn92OaEc7b&daddr=Rue+Foe+Omnisport,+Yaound%C3%A9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-3 group"
+              title="Omnisport, Rue Foé, Yaoundé"
+              aria-label="Adresse : Omnisport, Rue Foé, Yaoundé"
+            >
+              <div className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 text-slate-700 group-hover:border-jevelin-orange group-hover:text-jevelin-orange flex items-center justify-center flex-shrink-0 transition-colors">
                 <MapPin className="w-4 h-4 stroke-[1.75]" />
               </div>
-              <div>
+              <div className="hidden md:block">
                 <span className="font-bold uppercase tracking-[0.15em] text-slate-400 block text-[10px]">
                   {language === 'fr' ? 'ADRESSE' : 'ADDRESS'}
                 </span>
-                <span className="font-semibold text-slate-900">Omnisport, Rue Foé, Yaoundé</span>
+                <span className="font-semibold text-slate-900 group-hover:text-jevelin-orange transition-colors">
+                  Omnisport, Rue Foé, Yaoundé
+                </span>
               </div>
-            </div>
+            </a>
 
             {/* Email */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0">
+            <a
+              href="mailto:contact@3mconsultingsarl.com"
+              className="flex items-center space-x-3 group"
+              title="contact@3mconsultingsarl.com"
+              aria-label="Email : contact@3mconsultingsarl.com"
+            >
+              <div className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 text-slate-700 group-hover:border-jevelin-orange group-hover:text-jevelin-orange flex items-center justify-center flex-shrink-0 transition-colors">
                 <Mail className="w-4 h-4 stroke-[1.75]" />
               </div>
-              <div>
+              <div className="hidden md:block">
                 <span className="font-bold uppercase tracking-[0.15em] text-slate-400 block text-[10px]">
                   {language === 'fr' ? 'EMAIL OFFICIEL' : 'OFFICIAL EMAIL'}
                 </span>
-                <a
-                  href="mailto:contact@3mconsultingsarl.com"
-                  className="font-semibold text-slate-900 hover:text-jevelin-orange transition-colors"
-                >
+                <span className="font-semibold text-slate-900 group-hover:text-jevelin-orange transition-colors">
                   contact@3mconsultingsarl.com
-                </a>
+                </span>
               </div>
-            </div>
+            </a>
 
             {/* Telephone */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0">
+            <div className="flex items-center space-x-3 group">
+              <a
+                href="tel:+237673841821"
+                className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 text-slate-700 hover:border-emerald-500 hover:text-emerald-600 flex items-center justify-center flex-shrink-0 transition-colors"
+                title="Appeler : +237 673 84 18 21 / +237 698 66 87 61"
+                aria-label="Appeler 3M Consulting"
+              >
                 <Phone className="w-4 h-4 stroke-[1.75]" />
-              </div>
-              <div>
+              </a>
+              <div className="hidden md:block">
                 <span className="font-bold uppercase tracking-[0.15em] text-slate-400 block text-[10px]">
                   {language === 'fr' ? 'TÉLÉPHONE' : 'TELEPHONE'}
                 </span>
@@ -109,11 +126,22 @@ export const Footer: React.FC = () => {
             </div>
 
             {/* Work Hours */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 text-slate-700 flex items-center justify-center flex-shrink-0">
+            <div className="relative flex items-center space-x-3 group">
+              <button
+                type="button"
+                onClick={() => setShowHoursTooltip((prev) => !prev)}
+                className="w-10 h-10 rounded-full border border-slate-200 bg-slate-50 text-slate-700 hover:border-jevelin-orange hover:text-jevelin-orange flex items-center justify-center flex-shrink-0 transition-colors"
+                title="Lun-Ven: 7h30-17h30"
+                aria-label="Horaires d'ouverture"
+              >
                 <Clock className="w-4 h-4 stroke-[1.75]" />
-              </div>
-              <div>
+              </button>
+              {showHoursTooltip && (
+                <div className="md:hidden absolute bottom-full mb-2 left-1/2 -translate-x-1/2 whitespace-nowrap px-2.5 py-1 bg-slate-900 text-white text-[11px] font-semibold rounded shadow-lg z-20">
+                  {language === 'fr' ? 'Lun-Ven: 7h30-17h30' : 'Mon-Fri: 7:30-17:30'}
+                </div>
+              )}
+              <div className="hidden md:block">
                 <span className="font-bold uppercase tracking-[0.15em] text-slate-400 block text-[10px]">
                   {language === 'fr' ? 'HORAIRES' : 'WORK HOURS'}
                 </span>
