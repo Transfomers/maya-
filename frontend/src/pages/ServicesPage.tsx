@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { SERVICE_ID_TO_CANONICAL } from '../content/servicesSeoData';
 import {
@@ -14,13 +14,11 @@ import {
   FileText,
   Clock,
   PhoneCall,
-  Search,
   ChevronDown,
   ChevronUp,
   MapPin,
   Shield,
   ArrowRight,
-  Filter,
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { SEOHead } from '../components/SEOHead';
@@ -46,17 +44,6 @@ const SERVICE_IMAGES: Record<string, string> = {
   'montage-dsf': '/asset/ceo-monroi-maya-michael.webp',
   'montage-dao': '/asset/executive-portrait-sign.webp',
   'marches-publics': '/asset/team-full-office.webp',
-};
-
-// Category mapping for quick filtering
-const SERVICE_CATEGORIES: Record<string, 'legal' | 'tax' | 'procurement'> = {
-  'creation-entreprise': 'legal',
-  'recherche-locaux': 'legal',
-  'agrements-licences': 'legal',
-  'fiscalite-cnps': 'tax',
-  'montage-dsf': 'tax',
-  'montage-dao': 'procurement',
-  'marches-publics': 'procurement',
 };
 
 // Execution highlights for each service
@@ -96,8 +83,6 @@ export const ServicesPage: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [activeService, setActiveService] = useState<string>('');
   const [showCreationCatalogue, setShowCreationCatalogue] = useState<boolean>(true);
-  const [selectedCategory, setSelectedCategory] = useState<'all' | 'legal' | 'tax' | 'procurement'>('all');
-  const [searchQuery, setSearchQuery] = useState<string>('');
   const location = useLocation();
 
   // Scroll to hash anchor on mount or location change
@@ -117,30 +102,7 @@ export const ServicesPage: React.FC = () => {
     setModalOpen(true);
   };
 
-  // Filtered services based on category and search query
-  const filteredServices = useMemo(() => {
-    return t.whatWeOffer.services.filter((service) => {
-      // Category filter
-      const serviceCat = SERVICE_CATEGORIES[service.id] || 'legal';
-      if (selectedCategory !== 'all' && serviceCat !== selectedCategory) {
-        return false;
-      }
-
-      // Search filter
-      if (searchQuery.trim()) {
-        const query = searchQuery.toLowerCase().trim();
-        const matchesTitle = service.title.toLowerCase().includes(query);
-        const matchesSummary = service.summary.toLowerCase().includes(query);
-        const matchesDescription = service.description.toLowerCase().includes(query);
-        const matchesDeliverables = service.deliverables.some((d) => d.toLowerCase().includes(query));
-        const matchesDocuments = service.documentsRequired.some((doc) => doc.toLowerCase().includes(query));
-
-        return matchesTitle || matchesSummary || matchesDescription || matchesDeliverables || matchesDocuments;
-      }
-
-      return true;
-    });
-  }, [t.whatWeOffer.services, selectedCategory, searchQuery]);
+  const services = t.whatWeOffer.services;
 
   return (
     <div className="flex flex-col w-full bg-white">
@@ -258,119 +220,18 @@ export const ServicesPage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          INTERACTIVE CATEGORY FILTER & REAL-TIME SEARCH (100% Mobile Responsive)
-          ========================================================================= */}
-      <section className="sticky top-16 sm:top-20 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-3 sm:py-4 shadow-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 sm:gap-4">
-            {/* Category Filter Pills - Horizontally scrollable on mobile without wrapping, smooth swipe */}
-            <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
-              <button
-                type="button"
-                onClick={() => setSelectedCategory('all')}
-                className={`whitespace-nowrap flex-shrink-0 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold font-heading transition-all ${
-                  selectedCategory === 'all'
-                    ? 'bg-slate-900 text-white shadow-sm'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200/80'
-                }`}
-              >
-                {language === 'fr' ? 'Tous les Domaines (7)' : 'All Practice Areas (7)'}
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setSelectedCategory('legal')}
-                className={`whitespace-nowrap flex-shrink-0 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold font-heading transition-all ${
-                  selectedCategory === 'legal'
-                    ? 'bg-slate-900 text-white shadow-sm'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200/80'
-                }`}
-              >
-                {language === 'fr' ? 'Création & Implantation (3)' : 'Corporate & Legal (3)'}
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setSelectedCategory('tax')}
-                className={`whitespace-nowrap flex-shrink-0 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold font-heading transition-all ${
-                  selectedCategory === 'tax'
-                    ? 'bg-slate-900 text-white shadow-sm'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200/80'
-                }`}
-              >
-                {language === 'fr' ? 'Fiscalité & DSF (2)' : 'Tax & Accounting (2)'}
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setSelectedCategory('procurement')}
-                className={`whitespace-nowrap flex-shrink-0 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold font-heading transition-all ${
-                  selectedCategory === 'procurement'
-                    ? 'bg-slate-900 text-white shadow-sm'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200/80'
-                }`}
-              >
-                {language === 'fr' ? 'Marchés Publics & DAO (2)' : 'Public Tenders & DAO (2)'}
-              </button>
-            </div>
-
-            {/* Search Input Box */}
-            <div className="relative w-full md:w-80 flex-shrink-0">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={language === 'fr' ? 'Filtrer (SARL, DSF, CNPS, Bail, DAO...)' : 'Filter by keyword (DSF, CNPS, DAO...)'}
-                className="w-full pl-10 pr-8 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-jevelin-orange/30 focus:border-jevelin-orange transition"
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-bold"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
           THE 7 PRACTICE AREAS CARDS · High-Contrast Clarity on White Background
           ========================================================================= */}
       <section className="py-8 sm:py-12 lg:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
-          {filteredServices.length === 0 ? (
-            <div className="text-center py-12 sm:py-16 px-4 bg-slate-50 rounded-2xl sm:rounded-3xl border border-slate-200 space-y-4">
-              <Filter className="w-8 h-8 sm:w-10 sm:h-10 text-slate-400 mx-auto" />
-              <h3 className="text-base sm:text-lg font-bold text-slate-800">
-                {language === 'fr' ? 'Aucun domaine ne correspond à votre recherche' : 'No service matches your search query'}
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500">
-                {language === 'fr' ? 'Essayez avec un autre mot-clé ou réinitialisez les filtres.' : 'Try another keyword or reset the filter.'}
-              </p>
-              <button
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('all');
-                }}
-                className="px-6 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition"
-              >
-                {language === 'fr' ? 'Réinitialiser les filtres' : 'Reset filters'}
-              </button>
-            </div>
-          ) : (
-            filteredServices.map((service, index) => {
-              const IconComp = SERVICE_ICONS[service.iconName] || Briefcase;
-              const metric = SERVICE_METRICS[service.id]?.[language] || {
-                delay: language === 'fr' ? 'Traitement rapide' : 'Fast processing',
-                format: language === 'fr' ? 'Accompagnement expert' : 'Expert support',
-              };
+          {services.map((service, index) => {
+            const IconComp = SERVICE_ICONS[service.iconName] || Briefcase;
+            const metric = SERVICE_METRICS[service.id]?.[language] || {
+              delay: language === 'fr' ? 'Traitement rapide' : 'Fast processing',
+              format: language === 'fr' ? 'Accompagnement expert' : 'Expert support',
+            };
 
-              return (
+            return (
                 <article
                   key={service.id}
                   id={service.id}
@@ -560,8 +421,7 @@ export const ServicesPage: React.FC = () => {
                   </div>
                 </article>
               );
-            })
-          )}
+            })}
         </div>
       </section>
 
